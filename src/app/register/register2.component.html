@@ -1,0 +1,42 @@
+<div class="layui-container my-container">
+    <div class="layui-row">
+      <div class="layui-col-xs10 layui-col-xs-offset1">
+        <div style="height:40px;font:white;"></div>
+        <div class="layui-row">
+          <div class="layui-col-xs3 layui-col-xs-offset1">
+            <div [@selected]='state[0]' (click)="toggleState(0)" class="layui-circle" style="width:50px;height:50px;border:pink solid 1px;box-shadow:1px 2px 2px gray;"><img style="max-width:60%;max-height:60%;transform: translate(143%,37%)" src="../../assets/first.png"> </div>
+            <font color="white">填写信息</font>
+          </div>
+          <div class="layui-col-xs3 layui-col-xs-offset1">
+            <div [@selected]='state[1]' (click)="toggleState(1)" class="layui-circle" style="width:50px;height:50px;border:pink solid 1px;box-shadow:1px 2px 2px gray;"><img style="max-width:60%;max-height:60%;transform: translate(94%,36%)" src="../../assets/second.png"> </div>
+            <font color="white">实名认证</font>
+          </div>
+          <div class="layui-col-xs3 layui-col-xs-offset1">
+            <div [@selected]='state[2]' (click)="toggleState(2)" class="layui-circle" style="width:50px;height:50px;border:pink solid 1px;box-shadow:1px 2px 2px gray;"><img style="max-width:60%;max-height:60%;transform: translate(94%,36%)" src="../../assets/third.png"> </div>
+            <font color="white">完成注册</font>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height:40px;"></div>
+    <div class="layui-row">
+      <div [@choosed]='page[0]' class="layui-col-xs10 layui-col-xs-offset1" style="border-radius:10%;background:rgb(219, 153, 173);box-shadow:2px 5px 23px gray">
+          <input-div (onchange)='user.name=$event' com_name='name' text='称谓' isround='true' ></input-div>
+          <input-div (onchange)='user.sex=$event' com_name='sex' text='密码'  ></input-div>
+          <input-div (onchange)='user.age=$event' com_name='age' text='邮箱'  ></input-div>
+      </div>
+      <div [@choosed]='page[1]' class="layui-col-xs10 layui-col-xs-offset1" style="border-radius:10%;background:rgb(219, 153, 173);box-shadow:2px 5px 23px gray">
+
+      </div>
+      <div [@choosed]='page[2]' class="layui-col-xs10 layui-col-xs-offset1" style="border-radius:10%;background:rgb(219, 153, 173);box-shadow:2px 5px 23px gray">
+
+      </div>
+    </div>
+    <div style="height:50px;"></div>
+    <div class="layui-row">
+      <div class="layui-col-xs3 layui-col-xs-offset8">
+        <button (click)='onHover()'  [@hover]='hover' style="background:url('../../assets/nextbtn.png') no-repeat center;width:100%;height:40px;background-size:82% 64%;"></button>
+      </div>
+    </div>
+</div>
+

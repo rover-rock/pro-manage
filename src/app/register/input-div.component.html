@@ -1,0 +1,18 @@
+<div class="layui-row" style="background-color: rgba(175, 63, 19, 0.644);border-bottom-style:dotted;border-bottom-color:white;"  >
+    <div class="layui-col-xs10 layui-col-xs-offset1">
+      <div class="layui-row" style="padding:10px;">
+        <div class="layui-col-xs2">
+            <img src="../../assets/2.png" style="width: 2em;height:2em;">
+        </div>
+        <div class="layui-col-xs2">
+            <font color='white' size="3em">{{text}}</font>
+        </div>
+        <div class="layui-col-xs8" >
+
+            <input  placeholder="请填写您的{{text}}" style="border-radius: 10%;border-style:none;" [name]="com_name" [(ngModel)]='name ' (keyup)="change()">
+            {{name}}
+
+        </div>
+      </div>
+    </div>
+  </div>

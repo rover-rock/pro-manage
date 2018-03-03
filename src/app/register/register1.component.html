@@ -1,0 +1,22 @@
+<mat-horizontal-stepper style=" background:linear-gradient(left top,pink,rgb(212, 103, 189),pink);">
+    <mat-step label="Step 1">
+      <div class="layui-container">
+        <div style="height: 50px;"></div>
+        <form #form="ngForm" (ngSubmit)="onSubmit()">
+        <div style="border-radius:10%;box-shadow: 5px 5px 2px #888888;">
+          <input-div  (onchange)="model.name=$event" com_name="name" text="称谓"></input-div>
+          <input-div  (onchange)="model.sex=$event" com_name="sex" text="性别"> </input-div>
+          <input-div  (onchange)="model.age=$event" com_name="age" text="年龄"></input-div>
+      </div>
+      <div><button mat-button matStepperNext>下一步</button></div>
+    </form>
+    </div>
+    </mat-step>
+    <mat-step label="Step 2">
+      Content 2
+    </mat-step>
+    <mat-step label="step 3">
+      content 3
+    </mat-step>
+  </mat-horizontal-stepper>
+
