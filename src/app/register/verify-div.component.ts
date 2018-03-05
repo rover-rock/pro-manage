@@ -1,8 +1,8 @@
 import { Component,EventEmitter,Input,Output } from '@angular/core';
 import { User } from "../user";
 @Component({
-  selector: 'input-div',
-  templateUrl: './input-div.component.html',
+  selector: 'verify-div',
+  templateUrl: './verify-div.component.html',
   styles:[`
       .round{
         border-top-left-radius: 3em;
@@ -10,7 +10,7 @@ import { User } from "../user";
       }
   `]
 })
-export class InputDivComponent {
+export class VerifyDivComponent {
     @Input()  com_name:string;
     @Input()  text:string;
     @Input() isround:boolean=false;
@@ -19,6 +19,9 @@ export class InputDivComponent {
     @Output() onchange=new EventEmitter<string>();
     change(){
       this.onchange.emit(this.name);
+
+    }
+    requestVerifyCode(){
 
     }
 }

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ClarityModule } from "@clr/angular";
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { Message } from "./message/message.component";
@@ -11,6 +12,7 @@ import { RegisterComponent } from "./register/register.component";
 import { Register1Component } from "./register/register1.component";
 import { InputDivComponent } from "./register/input-div.component";
 import {  Register2Component } from "./register/register2.component";
+import { VerifyDivComponent } from "./register/verify-div.component";
 
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
@@ -28,6 +30,8 @@ import {MatInputModule} from '@angular/material/input';
     Register1Component,
     InputDivComponent,
     Register2Component,
+    VerifyDivComponent,
+
 
   ],
   imports: [
@@ -43,6 +47,7 @@ import {MatInputModule} from '@angular/material/input';
    ReactiveFormsModule,
    MatInputModule,
    FormsModule,
+    HttpClientModule,
 
 
   ],

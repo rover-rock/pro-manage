@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Injectable } from '@angular/core';
 import {
   trigger,
   state,
@@ -9,6 +9,7 @@ import {
 
 } from '@angular/animations';
 import { User } from "../user";
+import { HttpClient } from "@angular/common/http";
 @Component({
   selector: 'register2',
   templateUrl: './register2.component.html',
@@ -33,7 +34,7 @@ import { User } from "../user";
 
     ]),
     trigger('choosed',[
-      state('active', style({transform:'scale(1)',opacity:1,height:'400px'})),
+      state('active', style({transform:'scale(1)',opacity:1,height:'350px'})),
       state('inactive',style({transform:'scale(0)',opacity:0,height:'0'})),
       transition('active <=> inactive', animate('500ms ease-in'))
     ]),
@@ -50,9 +51,11 @@ export class Register2Component {
   state:string[]=["active","inactive","inactive"];
   page:string[]=["active","inactive","inactive"];
   hover:string='inactive';
-  indicator:number=0;
+  indicator:number=1;
 
-  user:User;
+  user:User=new User('','',1,1,'');
+
+  constructor(private http:HttpClient){};
   toggleState(i:number){
     this.state=["inactive","inactive","inactive"];
     this.state[i]="active";
@@ -72,5 +75,13 @@ export class Register2Component {
     else{
       this.indicator+=1;
     }
+    console.log(this.user)
+    const body = {name: 'Brad'};
+    this.http.get<any[]>('/getUsers').subscribe(data=>{
+      data.forEach(element => {
+        console.log(element['full_name']);
+      });
+    })
+    this.http.post('/addUser',this.user).subscribe();
   }
 }

@@ -27,4 +27,5 @@ export class AppComponent {
     this.state=this.state==='in'?'out':'in';
     console.log(this.state)
   }
+
 }

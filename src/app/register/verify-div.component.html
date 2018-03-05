@@ -1,0 +1,18 @@
+<div class="layui-row" style="border-bottom-color:white;margin:10px;" [class.round]='isround' >
+  <div class="layui-col-xs10">
+    <div class="layui-row" style="padding:10px;">
+      <div class="layui-col-xs2">
+          <img src="{{image}}" style="width: 2em;height:2em;">
+      </div>
+      <div class="layui-col-xs3">
+          <font color='white' size="3em">{{text}}</font>
+      </div>
+      <div class="layui-col-xs7" >
+
+          <input  placeholder="请填写您的{{text}}" style="border-radius: 0.5em;line-height: 1.5em;border-style:none;width:130%;" [name]="com_name" [(ngModel)]='name ' (keyup)="change()">
+
+          <div (click)='requestVerifyCode()' style="position: absolute;right: -25%;top: 1px;background: lightpink;border-radius: 0.5em;width: 50%;" >&nbsp;获取验证码</div>
+      </div>
+    </div>
+  </div>
+</div>

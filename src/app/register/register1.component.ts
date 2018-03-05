@@ -8,8 +8,8 @@ import { environment } from '../../environments/environment';
 
 })
 export class Register1Component {
-  model:User=new User('','',1);
+
   onSubmit(){
-    console.log(this.model);
+    console.log();
   }
 }
