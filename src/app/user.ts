@@ -1,3 +1,12 @@
-export class User{
-  constructor(public name:string,public sex:string,public age:number,public pwd:number,public mail:string,){}
+export class User {
+  constructor(
+    public nickname: string,
+    public sex: string,
+    public pwd: string,
+    public mail: string,
+    public realname: string,
+    public phone: number,
+    public cert_type: string,
+    public cert_num:string
+  ) {}
 }

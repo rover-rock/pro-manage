@@ -52,8 +52,8 @@ export class Register2Component {
   page:string[]=["active","inactive","inactive"];
   hover:string='inactive';
   indicator:number=1;
-
-  user:User=new User('','',1,1,'');
+  verifycode:string;
+  user:User=new User('','','','','',0,'','');
 
   constructor(private http:HttpClient){};
   toggleState(i:number){
@@ -76,12 +76,9 @@ export class Register2Component {
       this.indicator+=1;
     }
     console.log(this.user)
-    const body = {name: 'Brad'};
-    this.http.get<any[]>('/getUsers').subscribe(data=>{
-      data.forEach(element => {
-        console.log(element['full_name']);
-      });
+    this.http.get('http://fu.dicyan.cn/app/index.php?i=3&c=entry&do=deluser&m=friendsocity').subscribe(data=>{
+      console.log(data)
     })
-    this.http.post('/addUser',this.user).subscribe();
+
   }
 }

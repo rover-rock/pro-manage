@@ -6,13 +6,11 @@ import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { Message } from "./message/message.component";
-import { Test1Component } from "./examples/test1.component";
-import { RegisterComponent } from "./register/register.component";
-import { Register1Component } from "./register/register1.component";
 import { InputDivComponent } from "./register/input-div.component";
 import {  Register2Component } from "./register/register2.component";
 import { VerifyDivComponent } from "./register/verify-div.component";
+import { RegisterComponent } from "./register/register.component";
+import { BottomNavComponent } from "./bottom-nav.component";
 
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
@@ -24,13 +22,11 @@ import {MatInputModule} from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
-    Message,
-    Test1Component,
-    RegisterComponent,
-    Register1Component,
     InputDivComponent,
     Register2Component,
     VerifyDivComponent,
+    RegisterComponent,
+    BottomNavComponent,
 
 
   ],

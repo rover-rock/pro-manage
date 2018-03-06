@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+/* @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
 @import "../node_modules/@clr/ui/clr-ui.min.css";
-@import  "../node_modules/@clr/icons/clr-icons.min.css";
+@import  "../node_modules/@clr/icons/clr-icons.min.css"; */
 @import "../node_modules/layui-src/dist/css/layui.css";
 
 html,body{
@@ -10,7 +10,7 @@ html,body{
 }
 body{
   /* background: linear-gradient(to bottom right ,red, blue); */
-  background:linear-gradient(to right bottom,lightcyan,pink,lightcoral) no-repeat;
+  background:linear-gradient(to right bottom,#fbcdc7,#e9b4c7,#fca69d) no-repeat;
   background-size: 100%;
 
 }
