@@ -1,0 +1,38 @@
+.avatar{
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  border: 1px solid pink;
+  box-shadow: 1px 1px 10px 4px #cc8490;
+  background: #eadadd;
+}
+.avatar img{
+  width: 65%;
+  height: 65%;
+
+  margin: 11% 17%
+}
+.mat-raised-button{
+  width: 100%;
+  text-align: left;
+  background: white;
+
+}
+.divider{
+  border: 2px solid #bbacac;
+}
+.divider1{
+  border-bottom: 2px dotted pink;
+  margin: 0px 10px;
+}
+.mat-form-field{
+
+
+    width: 100%;
+}
+:host ::ng-deep .mat-input-flex.mat-form-field-flex{
+    background: white;
+}
+:host ::ng-deep  .mat-input-subscript-wrapper.mat-form-field-subscript-wrapper{
+  display: none;
+}

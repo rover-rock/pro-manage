@@ -1,0 +1,42 @@
+.swiper-slide img{
+  width: 100%;height:100%
+}
+
+.intro-words{
+  padding: 5% 0;
+  border-top: 5px dotted darkgray;
+  border-bottom: 5px dotted darkgray;
+  margin: 2%;
+  position: relative;
+}
+
+.bottom-dec{
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
+}
+.bottom-dec img{
+  border: none;
+    width: 100%;
+    height: 30px;
+}
+.showphoto{
+  margin: 30px 30px;
+}
+.showphoto img{
+  width: 100%;
+  height: 100%;
+}
+.comment{
+    margin:30px 25px;
+}
+.video{
+  height: 150px;
+  width: 90%;
+  border: 1px solid gray;
+  margin: 20px auto;
+  background: darkgray;
+}
+.avatar{
+  background: pink;
+}

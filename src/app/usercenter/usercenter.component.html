@@ -1,0 +1,58 @@
+<div class="layui-row" style="margin-bottom: 10%;">
+  <div class="layui-col-xs4 layui-col-xs-offset4">
+    <div class="layui-circle avatar">
+      <img src="/assets/user.png">
+    </div>
+    <div style="text-align:center;">
+      <font color="gray">安东尼</font>
+    </div>
+  </div>
+</div>
+<button mat-raised-button>订单中心&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;></button>
+<div class="divider"></div>
+<div style="background: white">
+<button mat-raised-button  (click)="openDialog()"> 昵称&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{name}}></button>
+<div class="divider1"></div>
+<button mat-raised-button>性别&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;></button>
+<div class="divider1"></div>
+<mat-form-field >
+  <mat-select placeholder="性别" >
+    <mat-option value="male">男</mat-option>
+    <mat-option value="female">女 </mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="divider1"></div>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       昵称
+      </mat-panel-title>
+      <mat-panel-description>
+        安东尼
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="First name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Age">
+    </mat-form-field>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        性别
+      </mat-panel-title>
+      <mat-panel-description>
+        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>I'm visible because I am open</p>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
+

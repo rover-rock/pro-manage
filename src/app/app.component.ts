@@ -1,31 +1,19 @@
-import { Component } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { Component,OnInit} from '@angular/core';
+import { Activity,ActivityService } from './activitycenter/activities.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations:[
-    trigger('flyInOut', [
-      state('in', style({transform: 'translateX(0)'})),
-      state('out',style({transform:'translateX(20%)'})),
-      transition('in <=> out', animate('100ms ease-in'))
-
-
-    ])
-  ]
+  providers:[ActivityService],
 })
-export class AppComponent {
-  state:string="in";
-  toggleState(){
-    this.state=this.state==='in'?'out':'in';
-    console.log(this.state)
-  }
+export class AppComponent  implements OnInit {
+
+
+    constructor(private actService:ActivityService){}
+    ngOnInit():void{
+
+
+    }
 
 }

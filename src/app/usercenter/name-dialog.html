@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>修改昵称</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput  placeholder="你的昵称" [(ngModel)]='name' >
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="name" >取消</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]="name">保存</button>
+</mat-dialog-actions>
