@@ -1,0 +1,32 @@
+.avatar{
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  border: 1px solid pink;
+  box-shadow: 1px 1px 10px 4px #cc8490;
+  background: #eadadd;
+}
+.avatar img{
+  width: 65%;
+  height: 65%;
+
+  margin: 11% 17%
+}
+.login-panel{
+  height: 300px;
+  border-radius: 4%;
+  background: rgb(292, 139, 143);
+  box-shadow: 2px 5px 23px gray;
+  background: url("/assets/panel1.png") no-repeat center;
+  background-size: 106% 108%;
+}
+input {
+  border-radius: 0.5em;
+  line-height: 2em;
+  border-style: none;
+  width: 95%;
+  margin: 15px 0;
+}
+input:focus{
+  box-shadow: -1px 2px 0px 1px grey
+}

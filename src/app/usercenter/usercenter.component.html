@@ -8,51 +8,103 @@
     </div>
   </div>
 </div>
-<button mat-raised-button>订单中心&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;></button>
+<button mat-raised-button class="full">订单中心&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;></button>
 <div class="divider"></div>
-<div style="background: white">
-<button mat-raised-button  (click)="openDialog()"> 昵称&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{name}}></button>
-<div class="divider1"></div>
-<button mat-raised-button>性别&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;></button>
-<div class="divider1"></div>
-<mat-form-field >
-  <mat-select placeholder="性别" >
-    <mat-option value="male">男</mat-option>
-    <mat-option value="female">女 </mat-option>
-  </mat-select>
-</mat-form-field>
-<div class="divider1"></div>
-<mat-accordion>
+
+<div style="background:white;">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          昵称
+        </mat-panel-title>
+        <mat-panel-description>
+          安东尼
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <input matInput placeholder="新的昵称">
+      </mat-form-field>
+      <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;">保存</button>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          性别
+        </mat-panel-title>
+        <mat-panel-description>
+          {{sex}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field>
+        <mat-select placeholder="性别">
+          <mat-option value="male">男</mat-option>
+          <mat-option value="female">女 </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          年龄
+        </mat-panel-title>
+        <mat-panel-description>
+          {{age}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-slider [(ngModel)]="age" thumbLabel='true' style="width:80%;"></mat-slider>
+
+    </mat-expansion-panel>
+  </mat-accordion>
+
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-       昵称
+       邮箱
       </mat-panel-title>
       <mat-panel-description>
-        安东尼
+        362463215@qq.com
       </mat-panel-description>
     </mat-expansion-panel-header>
-
     <mat-form-field>
-      <input matInput placeholder="First name">
+      <input matInput placeholder="新的邮箱">
     </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Age">
-    </mat-form-field>
+    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;">保存</button>
   </mat-expansion-panel>
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
+
+  <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        性别
+        身份证号
       </mat-panel-title>
       <mat-panel-description>
-        Currently I am {{panelOpenState ? 'open' : 'closed'}}
+       47885263145858
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>I'm visible because I am open</p>
+    <mat-form-field>
+      <input matInput placeholder="新的身份证号">
+    </mat-form-field>
+    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;">保存</button>
   </mat-expansion-panel>
-</mat-accordion>
-</div>
 
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        手机号
+      </mat-panel-title>
+      <mat-panel-description>
+        18956485236
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <input matInput placeholder="新的手机号">
+    </mat-form-field>
+    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;">保存</button>
+  </mat-expansion-panel>
+
+  <button mat-raised-button (click)="openDialog()"  class="full">个人简介</button>
+</div>
+<div class="divider"></div>
+<div style="background:white; height:100px;"><font style="font-size: 1.5em;color: gray;padding: 0px 18px;">更多功能期待中......</font></div>

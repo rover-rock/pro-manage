@@ -1,25 +1,33 @@
 <div style="position: fixed;bottom: 0px;width: 100%;">
   <div class="layui-row" style="background: white">
-      <div class="layui-col-xs2 layui-col-xs-offset1" (click)="indicator=0" [class.selected]="indicator===0" routerLink='/activities' >
-          <div   class="layui-circle nav1" > </div>
+    <a routerLink='/activities'>
+      <div class="layui-col-xs2 layui-col-xs-offset1" (click)="indicator=0"   >
+          <div   class="layui-circle nav1"  [class.selected]="indicator===0"> </div>
 
             <font>活动中心</font>
       </div>
-      <div class="layui-col-xs2 layui-col-xs-offset1" (click)="indicator=1" [class.selected]="indicator===1" >
-          <div   class="layui-circle nav2" > </div>
+    </a>
+    <a routerLink='/acts'>
+      <div class="layui-col-xs2 layui-col-xs-offset1" (click)="indicator=1"  >
+          <div   class="layui-circle nav2" [class.selected]="indicator===1"> </div>
 
             <font>相亲大厅</font>
       </div>
-      <div class="layui-col-xs2 layui-col-xs-offset1" routerLink='/usercenter'>
-          <div   class="layui-circle nav3"  >  </div>
+    </a>
+    <a routerLink='/usercenter'>
+      <div class="layui-col-xs2 layui-col-xs-offset1"  (click)="indicator=2">
+          <div   class="layui-circle nav3"  [class.selected]="indicator===2">  </div>
 
             <font>个人资料</font>
       </div>
-      <div class="layui-col-xs2 layui-col-xs-offset1">
-          <div   class="layui-circle nav4" > </div>
+    </a>
+    <a>
+      <div class="layui-col-xs2 layui-col-xs-offset1" (click)="indicator=3">
+          <div   class="layui-circle nav4" [class.selected]="indicator===3"> </div>
 
             <font>您的后宫</font>
       </div>
+    </a>
   </div>
 
 </div>

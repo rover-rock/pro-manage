@@ -1,0 +1,28 @@
+#btn img{
+  width: 20%;
+}
+.panel{
+  background: white;
+  width: 80%;
+  margin: 26% auto;
+  border-radius: 15px;
+  box-shadow: 3px 4px 15px 2px grey;
+  padding-bottom: 1%;
+  padding-top: 12%;
+  position: relative;
+}
+#btn{
+  width: 50%;
+  margin: 10px auto;
+  font-size: 2em;
+  color: #bf6565;
+  border: 2px solid #bf6565;
+
+}
+.header{
+  position: absolute;
+  width: 31%;
+  height: 38%;
+  top: -27%;
+  left: 35%;
+}

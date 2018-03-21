@@ -26,8 +26,14 @@ import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from "@angular/material/select";
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatSliderModule} from '@angular/material/slider';
 
 import { UsercenterComponent } from './usercenter/usercenter.component';
+import { LoginComponent } from './login/login.component';
+import { ActsComponent } from './hall/acts/acts.component';
+import { ActDetailComponent } from './hall/act-detail/act-detail.component';
+import { InfoVerifyComponent } from './hall/info-verify/info-verify.component';
+import { ConfirmOrderComponent } from './hall/confirm-order/confirm-order.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +47,11 @@ import { UsercenterComponent } from './usercenter/usercenter.component';
     ActivityDetailComponent,
     UsercenterComponent,
     NameDialog,
+    LoginComponent,
+    ActsComponent,
+    ActDetailComponent,
+    InfoVerifyComponent,
+    ConfirmOrderComponent,
 
   ],
   entryComponents: [
@@ -57,16 +68,23 @@ import { UsercenterComponent } from './usercenter/usercenter.component';
     MatFormFieldModule,
     MatDialogModule,
     MatExpansionModule,
+    MatSliderModule,
+
    ReactiveFormsModule,
    MatInputModule,
    MatSelectModule,
    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path:'',redirectTo:'/activities',pathMatch:'full'},
+      {path:'',redirectTo:'/acts',pathMatch:'full'},
       {path:'activities',component:ActivitiesComponent},
       {path:'activity-detail',component:ActivityDetailComponent},
-      {path:'usercenter',component:UsercenterComponent}
+      {path:'usercenter',component:UsercenterComponent},
+      {path:'acts',component:ActsComponent},
+      {path:'act-detail',component:ActDetailComponent},
+      {path:'info-verify',component:InfoVerifyComponent},
+      {path:'confirm-order',component:ConfirmOrderComponent},
+
     ])
 
   ],

@@ -14,6 +14,6 @@ import {
   animations:[]
 })
 export class BottomNavComponent {
-  indicator:number=0;
+  indicator:number=-1;
 
 }

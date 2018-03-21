@@ -1,0 +1,76 @@
+.subscribe{
+  width: 90%;
+  margin: 30px auto;
+  background:#fff8ef;
+  box-shadow: 0px 0px 10px 2px grey;
+  border-radius: 10px;
+  padding: 10px;
+}
+.corner-img{
+  width: 35%;
+  position: absolute;
+  top: -20%;
+  z-index: 1;
+}
+.left-img{
+  width: 40%;
+    opacity: 0.5;
+    z-index: 2;
+    margin-left: 15%;
+}
+.right-img{
+  width: 40%;
+  position: relative;
+  left: -2%;
+  border: 6px solid #e8ccd1;
+}
+.header{
+  position: relative;
+}
+.header-p{
+  position: absolute;
+  z-index: 3;
+  top: -8%;
+  left: 3%;
+  font-size: 1.2em;
+}
+.content{
+  border-top: 5px dotted darkgray;
+  border-bottom: 5px dotted darkgray;
+  height: 200px;
+}
+.description{
+  text-align: center;
+  border-bottom: 5px dotted darkgray;
+  padding: 7%
+
+}
+.operation{
+  padding: 10px;
+    margin-top: 20px;
+}
+.operation img{
+  width: 15%;
+}
+.btn1{
+  margin-left: 7%;
+  margin-right: 20%;
+}
+.btn2{
+
+}
+.btn3{
+  margin-left: 20%;
+}
+.tips{
+  width: 78%;
+  position: absolute;
+  bottom: -7%;
+  left: 12%;
+}
+.pin{
+  width: 5%;
+  position: absolute;
+  top: -11%;
+  right: 20%;
+}

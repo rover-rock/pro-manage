@@ -9,12 +9,13 @@ export class UsercenterComponent  {
 
   panelOpenState: boolean = false;
   name: string='安东尼';
-
+  sex:string='male';
+  age:number=0;
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     let dialogRef = this.dialog.open(NameDialog, {
-      height: '200px',
+      height: '400px',
       width: '300px',
       data: { name: this.name }
     });

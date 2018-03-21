@@ -23,11 +23,7 @@ export class ActivitiesComponent implements OnInit{
 
       // 如果需要分页器
       pagination: {
-        el: '.swiper-pagination',
-        type: 'progressbar',
-        renderProgressbar: function (progressbarFillClass) {
-          return '<span class="' + progressbarFillClass + '"></span>';
-        }
+        el: '.swiper-pagination'
       },
       dynamicBullets:true,
       longSwipesRatio: 0.3,

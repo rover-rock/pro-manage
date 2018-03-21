@@ -12,12 +12,7 @@
 
   margin: 11% 17%
 }
-.mat-raised-button{
-  width: 100%;
-  text-align: left;
-  background: white;
 
-}
 .divider{
   border: 2px solid #bbacac;
 }
@@ -25,14 +20,11 @@
   border-bottom: 2px dotted pink;
   margin: 0px 10px;
 }
-.mat-form-field{
 
-
-    width: 100%;
-}
 :host ::ng-deep .mat-input-flex.mat-form-field-flex{
     background: white;
 }
-:host ::ng-deep  .mat-input-subscript-wrapper.mat-form-field-subscript-wrapper{
-  display: none;
+.full{
+  width: 100%;
+  text-align: left;
 }
