@@ -1,0 +1,41 @@
+<div style="background: white;left: 18%;top:8%;height: 100px;
+width: 64%;
+border-radius:20px;
+position: fixed;    opacity: 0.6;
+"></div>
+<div style="background: white;left: 22%;top:6%;height: 100px;
+width: 56%;
+border-radius:20px;
+position: fixed;    opacity: 0.6;
+"></div>
+
+<app-choose *ngFor="let div of divs"  (onChoose)="choose($event) "></app-choose>
+
+<div class="words">
+  <p>
+    “漫天的我，落在枫叶雪花上”
+  </p>
+</div>
+<div class="operation">
+  <img  [@pop]='cold' (click)="popcold()" src="/assets/house/cold.png" style="    width: 10%;
+  margin-left: 20%;
+  margin-right: 40%;">
+  <img [@pop]='hot' (click)="pophot()" src="/assets/house/hot.png" style="width: 10%">
+</div>
+<div style=" position: fixed;
+top: 30%;
+height: 68%;
+background: lightgray;
+width: 100%;
+z-index: -1000;"></div>
+<div [@popup]='over' style="    position: fixed;
+left: 15%;
+height: 50px;
+width: 70%;
+background: #cba4d0;
+text-align: center;
+border-radius: 55.7px;
+padding: 15% 2%;">
+      <font style="font-size: 1.5em;color: ivory;">选妃完毕，进入后宫看看不</font><br>
+      <button class="layui-btn layui-btn-primary  layui-btn-radius" style="margin-top:5%;" routerLink="/palace">临幸</button>
+</div>

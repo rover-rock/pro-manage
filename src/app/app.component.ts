@@ -9,7 +9,6 @@ import { Activity,ActivityService } from './activitycenter/activities.service';
 })
 export class AppComponent  implements OnInit {
 
-
     constructor(private actService:ActivityService){}
     ngOnInit():void{
 

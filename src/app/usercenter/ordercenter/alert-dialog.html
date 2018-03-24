@@ -1,0 +1,9 @@
+<h2 mat-dialog-title style="text-align: center">操作提示</h2>
+<mat-dialog-content>
+    <p >操作不可恢复，确认{{data['operation']}}吗？</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]='false'>取消</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button mat-button [mat-dialog-close]='true' >确定</button>
+</mat-dialog-actions>

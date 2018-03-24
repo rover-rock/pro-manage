@@ -2,7 +2,7 @@ import { Injectable} from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
 export class Activity{
-  constructor(public id:number, public title:string,public gentleman:number,public girls:number,public start_time:number,public banner:string){}
+  constructor(public id:number, public title:string,public gentlemen:number,public girls:number,public start_time:string,public banner:string){}
 }
 
 

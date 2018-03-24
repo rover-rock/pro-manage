@@ -1,0 +1,29 @@
+:host /deep/ .mat-tab-label{
+  width: 33%;
+}
+.order-panel{
+  height: 100px;
+  background: #eaeaea;
+  padding: 4% 4% 0% 4%;
+}
+.mat-card {
+  padding: 24px 0px;
+}
+:host ::ng-deep .mat-tab-body-content{
+  overflow: hidden;
+}
+.mat-card-title{
+  font-size: 20px;
+}
+:host ::ng-deep .mat-tab-label-container{
+  z-index: 1000;
+}
+:host ::ng-deep .mat-tab-list{
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+}
+.fill{
+  height: 4%;
+}

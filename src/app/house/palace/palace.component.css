@@ -1,0 +1,17 @@
+:host ::ng-deep .mat-tab-list{
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+}
+.fill{
+  height: 4%;
+}
+:host ::ng-deep .mat-tab-label-container{
+  z-index: 1000;
+}
+:host /deep/ .mat-tab-label{
+  width: 50%;
+  color: red;
+  font-size: 1.3em;
+}

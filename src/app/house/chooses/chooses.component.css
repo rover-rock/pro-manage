@@ -1,0 +1,13 @@
+.words{
+  position: fixed;
+  top: 60%;
+  text-align: center;
+  color: gray;
+  font-size: 1.2em;
+  width: 100%
+}
+.operation{
+  position: fixed;
+  top: 70%;
+  width: 100%;
+}

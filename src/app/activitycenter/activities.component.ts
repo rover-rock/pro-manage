@@ -15,7 +15,7 @@ export class ActivitiesComponent implements OnInit{
 
 
   ngOnInit():void{
-    this.actService.getActivities().then(data=>this.results=data);
+    this.actService.getActivities().then(data=>{this.results=data});
     console.log('ngOnInit')
     var mySwiper = new Swiper ('.swiper-container', {
       direction: 'horizontal',
@@ -31,7 +31,16 @@ export class ActivitiesComponent implements OnInit{
       observer:true,//修改swiper自己或子元素时，自动初始化swiper
       observeParents:true,//修改swiper的父元素时，自动初始化swiper
       autoplay:2000,
-      fadeEffect:true,
+      effect : 'coverflow',
+    slidesPerView: 1,
+    centeredSlides: true,
+    coverflowEffect: {
+    rotate: 30,
+    stretch: 10,
+    depth: 60,
+    modifier: 2,
+    slideShadows : true
+  },
 
 
     })

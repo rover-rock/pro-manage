@@ -27,6 +27,9 @@ import { MatSelectModule } from "@angular/material/select";
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { UsercenterComponent } from './usercenter/usercenter.component';
 import { LoginComponent } from './login/login.component';
@@ -34,6 +37,11 @@ import { ActsComponent } from './hall/acts/acts.component';
 import { ActDetailComponent } from './hall/act-detail/act-detail.component';
 import { InfoVerifyComponent } from './hall/info-verify/info-verify.component';
 import { ConfirmOrderComponent } from './hall/confirm-order/confirm-order.component';
+import { OrdercenterComponent,AlertDialog } from './usercenter/ordercenter/ordercenter.component';
+import { ChooseComponent } from './house/choose/choose.component';
+import { ChoosesComponent } from './house/chooses/chooses.component';
+import { PalaceComponent } from './house/palace/palace.component';
+
 
 @NgModule({
   declarations: [
@@ -52,10 +60,17 @@ import { ConfirmOrderComponent } from './hall/confirm-order/confirm-order.compon
     ActDetailComponent,
     InfoVerifyComponent,
     ConfirmOrderComponent,
+    OrdercenterComponent,
+    AlertDialog,
+    ChooseComponent,
+    ChoosesComponent,
+    PalaceComponent,
 
   ],
   entryComponents: [
     NameDialog,
+    AlertDialog,
+
   ],
   imports: [
     BrowserModule,
@@ -69,6 +84,10 @@ import { ConfirmOrderComponent } from './hall/confirm-order/confirm-order.compon
     MatDialogModule,
     MatExpansionModule,
     MatSliderModule,
+    MatTabsModule,
+    MatListModule,
+    MatDividerModule,
+
 
    ReactiveFormsModule,
    MatInputModule,
@@ -76,7 +95,7 @@ import { ConfirmOrderComponent } from './hall/confirm-order/confirm-order.compon
    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path:'',redirectTo:'/acts',pathMatch:'full'},
+
       {path:'activities',component:ActivitiesComponent},
       {path:'activity-detail',component:ActivityDetailComponent},
       {path:'usercenter',component:UsercenterComponent},
@@ -84,7 +103,9 @@ import { ConfirmOrderComponent } from './hall/confirm-order/confirm-order.compon
       {path:'act-detail',component:ActDetailComponent},
       {path:'info-verify',component:InfoVerifyComponent},
       {path:'confirm-order',component:ConfirmOrderComponent},
-
+      {path:'ordercenter',component:OrdercenterComponent},
+      {path:'chooses',component:ChoosesComponent},
+      {path:'palace',component:PalaceComponent},
     ])
 
   ],
