@@ -95,7 +95,8 @@ import { PalaceComponent } from './house/palace/palace.component';
    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-
+      {path:'register',component:RegisterComponent},
+      {path:'login',component:LoginComponent},
       {path:'activities',component:ActivitiesComponent},
       {path:'activity-detail',component:ActivityDetailComponent},
       {path:'usercenter',component:UsercenterComponent},

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PalaceComponent implements OnInit {
 
+  persons:number[]=[100,90,80,70];
   constructor() { }
 
   ngOnInit() {
