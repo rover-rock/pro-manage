@@ -1,19 +1,19 @@
 <div class="layui-row" style="height: 100%">
   <div class="layui-col-xs6">
-    <div class="act-panel" *ngFor="let i of ts"  routerLink="/act-detail">
-      <img src="/assets/act1.jpg" class="headerimg">
+    <div class="act-panel" *ngFor="let act of left_acts"  [routerLink]="['/act-detail',act.id]">
+      <img src="{{act.titleimage}}" class="headerimg">
       <div class="layui-row">
-        <div class="layui-col-xs8">
+        <div class="layui-col-xs7">
         <div style="margin: 10px 7px;">
-          <p style="font-size:1em;"> 这里是标题</p>
-            <p style="font-size:0.1em;">时间：2018-1-29
+          <p style="font-size:1em;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{act.title}} </p>
+            <p style="font-size:0.1em;">时间：{{act.start_time}}
               <br>限制人数：50</p>
           </div>
         </div>
-        <div class="layui-col-xs4">
+        <div class="layui-col-xs5">
           <div style="margin-top:68%;">
-            <img src="/assets/hall/boy-icon.png" class="boy">22
-          <img src="/assets/hall/girl-icon.png" class="girl">22
+            <img src="/assets/hall/boy-icon.png" class="boy">{{act.gentlemen}}
+          <img src="/assets/hall/girl-icon.png" class="girl">{{act.girls}}
           </div>
 
         </div>
@@ -22,40 +22,40 @@
     </div>
   </div>
   <div class="layui-col-xs6">
-          <div class="act-panel-spec">
+          <div class="act-panel-spec" [routerLink]="['/act-detail',spec_act.id]">
             <img src="/assets/act1.jpg" class="headerimg-spec">
             <div class="layui-row">
-              <div class="layui-col-xs8">
+              <div class="layui-col-xs7">
               <div style="margin: 10px 7px;">
-                <p style="font-size:1em;"> 这里是标题</p>
-                  <p style="font-size:0.1em;">时间：2018-1-29
+                <p style="font-size:1em;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> {{spec_act.title}}</p>
+                  <p style="font-size:0.1em;">时间：{{spec_act.start_time}}
                     <br>限制人数：50</p>
                 </div>
               </div>
-              <div class="layui-col-xs4">
+              <div class="layui-col-xs5">
                 <div style="margin-top:68%;">
-                  <img src="/assets/hall/boy-icon.png" class="boy">22
-                <img src="/assets/hall/girl-icon.png" class="girl">22
+                  <img src="/assets/hall/boy-icon.png" class="boy">{{spec_act.gentlemen}}
+                <img src="/assets/hall/girl-icon.png" class="girl">{{spec_act.girls}}
                 </div>
 
               </div>
             </div>
 
           </div>
-          <div class="act-panel" *ngFor="let i of ts">
-              <img src="/assets/act1.jpg" class="headerimg">
+          <div class="act-panel" *ngFor="let act of right_acts" [routerLink]="['/act-detail',act.id]">
+              <img src="{{act.titleimage}}" class="headerimg">
               <div class="layui-row">
-                <div class="layui-col-xs8">
+                <div class="layui-col-xs7">
                 <div style="margin: 10px 7px;">
-                  <p style="font-size:1em;"> 这里是标题</p>
-                    <p style="font-size:0.1em;">时间：2018-1-29
+                  <p style="font-size:1em;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;"> {{act.title}}</p>
+                    <p style="font-size:0.1em;">时间：{{act.start_time}}
                       <br>限制人数：50</p>
                   </div>
                 </div>
-                <div class="layui-col-xs4">
+                <div class="layui-col-xs5">
                   <div style="margin-top:68%;">
-                    <img src="/assets/hall/boy-icon.png" class="boy">22
-                  <img src="/assets/hall/girl-icon.png" class="girl">22
+                    <img src="/assets/hall/boy-icon.png" class="boy">{{act.gentlemen}}
+                  <img src="/assets/hall/girl-icon.png" class="girl">{{act.girls}}
                   </div>
 
                 </div>

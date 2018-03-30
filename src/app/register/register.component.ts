@@ -1,4 +1,4 @@
-import { Component,Injectable } from '@angular/core';
+import { Component,Injectable,OnInit } from '@angular/core';
 import {
   trigger,
   state,
@@ -8,8 +8,10 @@ import {
   keyframes,
 
 } from '@angular/animations';
-import { User } from "../user";
+import { User,UserService } from "../user.service";
 import { HttpClient } from "@angular/common/http";
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
 @Component({
   selector: 'register',
   templateUrl: './register.component.html',
@@ -19,24 +21,12 @@ import { HttpClient } from "@angular/common/http";
       state('active', style({backgroundColor:'white',transform:'scale(1.2)'})),
       state('inactive',style({backgroundColor:'lightpink',transform:'scale(1)'})),
       transition('active => inactive', animate('200ms ease-in')),
-      transition('inactive => active', [
-        animate(4000, keyframes([
-          style({ transform: 'scale(1.1)',  offset: 0.1}),
-          style({ transform: 'scale(1.2)',  offset: 0.2}),
-          style({ transform: 'scale(1)',  offset: 0.3}),
-          style({ transform: 'scale(1.2)',  offset: 0.4}),
-          style({ transform: 'scale(1)',  offset: 0.6}),
-          style({ transform: 'scale(1.2)',  offset: 0.8}),
-          style({ transform: 'scale(1)',  offset: 0.9}),
-        ]))
+      transition('inactive => active', animate('200ms ease-in'))
       ]),
-
-
-    ]),
     trigger('choosed',[
-      state('active', style({transform:'scale(1)',opacity:1,height:'350px'})),
-      state('active1', style({transform:'scale(1)',opacity:1,height:'270px'})),
-      state('active2', style({transform:'scale(1)',opacity:1,height:'350px'})),
+      state('active', style({transform:'scale(1)',opacity:1,height:'250px'})),
+      state('active1', style({transform:'scale(1)',opacity:1,height:'200px'})),
+      state('active2', style({transform:'scale(1)',opacity:1,height:'250px'})),
       state('inactive',style({transform:'scale(0)',opacity:0,height:'0'})),
       transition('active <=> inactive', animate('500ms ease-in')),
       transition('active1<=> inactive', animate('500ms ease-in')),
@@ -50,19 +40,24 @@ import { HttpClient } from "@angular/common/http";
       state('inactive',style({boxShadow:'0px 9px 23px 5px #a2747c'})),
       transition('active <=> inactive', animate('100ms ease-in'))
     ])
-  ]
+  ],
+  providers:[UserService]
 })
 
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+
   state:string[]=["active","inactive","inactive"];
   page:string[]=["active","inactive","inactive"];
   hover:string='inactive';
   hover_prev:string="inactive";
   indicator:number=0;
   verifycode:string;
-  user:User=new User('','','','','',0,'','');
+  user:User=new User('','','','','',0,'','','');
 
-  constructor(private http:HttpClient){};
+  constructor(private userService:UserService,private route: ActivatedRoute){};
+  ngOnInit(){
+    this.user.openid=this.route.snapshot.paramMap.get('openid');
+  }
   toggleState(i:number){
     this.state=["inactive","inactive","inactive"];
     this.state[i]='active';
@@ -87,16 +82,14 @@ export class RegisterComponent {
 
     if(this.indicator==1){
       this.indicator=2
+      this.addUser();
     }
     else{
       this.indicator+=1;
     }
-console.log(this.indicator);
     this.toggleState(this.indicator);
-    console.log(this.user)
-    this.http.get('http://fu.dicyan.cn/app/index.php?i=3&c=entry&do=getusers&m=friendsocity').subscribe(data=>{
-      console.log(data)
-    })
+
+
 
   }
   prev(){
@@ -107,7 +100,11 @@ console.log(this.indicator);
     console.log(this.indicator);
 
   }
-  log(value){
-    console.log(value)
+
+  acquireVerifyCode(){
+
+  }
+  addUser(){
+    this.userService.addUser(this.user).subscribe(res=>console.log(res));
   }
 }

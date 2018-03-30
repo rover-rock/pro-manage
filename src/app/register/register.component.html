@@ -29,14 +29,17 @@
     <div [@choosed]='page[0]' class="layui-col-xs10 layui-col-xs-offset1 selected-page1" >
         <div class="layui-row">
           <div class="layui-col-xs8 layui-col-xs-offset4">
-              <input  placeholder="请填写您的称谓" [(ngModel)]="user.nickname" >
-              <input  placeholder="请填写您的密码" [(ngModel)]="user.pwd">
-              <input  placeholder="请填写您的邮箱" [(ngModel)]="user.mail">
-              <input  placeholder="请填写您的手机号" [(ngModel)]="user.phone">
-              <input  placeholder="请填写您的验证码" style="margin-top: 27px;">
+            <form #userForm="ngForm">
+              <input  placeholder="*请填写您的称谓" [(ngModel)]="user.nickname" name="name" required>
+              <input  placeholder="*请填写您的密码" [(ngModel)]="user.pwd" name="pwd" required>
+              <input  placeholder="*请填写您的邮箱" [(ngModel)]="user.mail" name="email" type="email" pattern="^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$" required>
+              <input  placeholder="*请填写您的手机号" [(ngModel)]="user.phone" name="phone" required type="number">
+              <input  placeholder="请填写您的验证码" >
               <div class="verify-input">&nbsp;&nbsp;获取验证码</div>
+            </form>
           </div>
         </div>
+        <span style="color:gray">*为必填项</span>
     </div>
     <div [@choosed]='page[1]' class="layui-col-xs10 layui-col-xs-offset1 selected-page2" >
         <div class="layui-col-xs8 layui-col-xs-offset4">
@@ -59,18 +62,18 @@
       <div style="height: 300px"></div>
         <div class="layui-row">
           <div class="layui-col-xs10 layui-col-xs-offset1">
-            <button class="login-btn"><font color="white" font-size="1.3em">登&nbsp;陆</font> </button>
+            <button class="login-btn"><font color="white" font-size="1.3em" routerLink='/acts'>登&nbsp;陆</font> </button>
           </div>
         </div>
     </div>
   </div>
-  <div style="height:50px;"></div>
+  <div style="height: 40px;"></div>
   <div class="layui-row">
     <div class="layui-col-xs3 layui-col-xs-offset1">
       <button (click)="prev()" [@hover]='hover_prev' class="prev-btn"  *ngIf="indicator===1"></button>
     </div>
     <div class="layui-col-xs3 layui-col-xs-offset4">
-      <button (click)='next()'  [@hover]='hover' class="next-btn"  *ngIf="indicator!=2"></button>
+      <button (click)='next()'  [@hover]='hover' class="next-btn"  *ngIf="indicator!=2"  ></button>
     </div>
   </div>
 </div>

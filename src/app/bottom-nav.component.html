@@ -3,30 +3,30 @@
   <div class="layui-row" style="background: white">
     <a routerLink='/activities'>
       <div class="layui-col-xs2 layui-col-xs-offset1" (click)="indicator=0"   >
-          <div   class="layui-circle nav1"  [class.selected]="indicator===0"> </div>
+          <div   class="layui-circle nav1"  [class.nav10]="indicator===0"> </div>
 
-            <font>活动中心</font>
+            <font style="font-size:0.5em">活动中心</font>
       </div>
     </a>
     <a routerLink='/acts'>
       <div class="layui-col-xs2 layui-col-xs-offset1" (click)="indicator=1"  >
-          <div   class="layui-circle nav2" [class.selected]="indicator===1"> </div>
+          <div   class="layui-circle nav2" [class.nav20]="indicator===1"> </div>
 
-            <font>相亲大厅</font>
+            <font style="font-size:0.5em">相亲大厅</font>
       </div>
     </a>
     <a routerLink='/usercenter'>
       <div class="layui-col-xs2 layui-col-xs-offset1"  (click)="indicator=2">
-          <div   class="layui-circle nav3"  [class.selected]="indicator===2">  </div>
+          <div   class="layui-circle nav3"  [class.nav30]="indicator===2">  </div>
 
-            <font>个人资料</font>
+            <font style="font-size:0.5em">个人资料</font>
       </div>
     </a>
     <a routerLink='/palace'>
       <div class="layui-col-xs2 layui-col-xs-offset1" (click)="indicator=3">
-          <div   class="layui-circle nav4" [class.selected]="indicator===3"> </div>
+          <div   class="layui-circle nav4" [class.nav40]="indicator===3"> </div>
 
-            <font>您的后宫</font>
+            <font style="font-size:0.5em">您的后宫</font>
       </div>
     </a>
   </div>

@@ -1,11 +1,15 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject,HostBinding } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { RotateAnimation } from "../animations";
 @Component({
   selector: 'app-usercenter',
   templateUrl: './usercenter.component.html',
-  styleUrls: ['./usercenter.component.css']
+  styleUrls: ['./usercenter.component.css'],
+  animations:[RotateAnimation]
 })
 export class UsercenterComponent  {
+  @HostBinding('@rotateRouteAnimation') routeAnimation = true;
+  @HostBinding('style.display')   display = 'block';
 
   panelOpenState: boolean = false;
   name: string='安东尼';

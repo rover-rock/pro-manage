@@ -1,37 +1,53 @@
 .nav1 {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 
 
   background: url('/assets/nav1.png') no-repeat center;
   background-size: 55% 60%;
 }
+.nav10{
+  width: 40px;
+  height: 40px;
+
+
+  background: url('/assets/nav10.png') no-repeat center;
+  background-size: 80% 80%;
+}
 .nav2 {
-  width: 50px;
-  height: 50px;
 
-
+  width: 40px;
+  height: 40px;
   background: url('/assets/nav2.png') no-repeat center;
-  background-size: 61% 61%;
+  background-size: 61% 56%;
+}
+.nav20{
+  background: url('/assets/nav20.png') no-repeat center;
+  background-size: 80% 80%;
 }
 .nav3 {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 
   background: url('/assets/nav3.png') no-repeat center;
-  background-size: 60% 60%;
+  background-size: 56% 56%;
+}
+.nav30{
+  background: url('/assets/nav30.png') no-repeat center;
+  background-size: 90% 90%;
 }
 .nav4 {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 
   background: url('/assets/nav4.png') no-repeat center;
   background-size: 60% 55%;
 }
-.selected{
-  background:pink;
-
+.nav40{
+  background: url('/assets/nav40.png') no-repeat center;
+  background-size: 80% 80%;
 }
+
 div{
   border: none;
 }

@@ -5,11 +5,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { RouterModule }   from '@angular/router';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { InputDivComponent } from "./register/input-div.component";
-import {  Register2Component } from "./register/register2.component";
-import { VerifyDivComponent } from "./register/verify-div.component";
+
 import { RegisterComponent } from "./register/register.component";
 import { BottomNavComponent } from "./bottom-nav.component";
 import { ActivitiesComponent } from "./activitycenter/activities.component";
@@ -46,9 +45,7 @@ import { PalaceComponent } from './house/palace/palace.component';
 @NgModule({
   declarations: [
     AppComponent,
-    InputDivComponent,
-    Register2Component,
-    VerifyDivComponent,
+
     RegisterComponent,
     BottomNavComponent,
     ActivitiesComponent,
@@ -95,21 +92,26 @@ import { PalaceComponent } from './house/palace/palace.component';
    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
+      {path:'',redirectTo:'/register',pathMatch:'full'},
       {path:'register',component:RegisterComponent},
       {path:'login',component:LoginComponent},
       {path:'activities',component:ActivitiesComponent},
-      {path:'activity-detail',component:ActivityDetailComponent},
+      {path:'activity-detail/:id',component:ActivityDetailComponent},
       {path:'usercenter',component:UsercenterComponent},
       {path:'acts',component:ActsComponent},
-      {path:'act-detail',component:ActDetailComponent},
+      {path:'act-detail/:id',component:ActDetailComponent},
       {path:'info-verify',component:InfoVerifyComponent},
       {path:'confirm-order',component:ConfirmOrderComponent},
       {path:'ordercenter',component:OrdercenterComponent},
       {path:'chooses',component:ChoosesComponent},
       {path:'palace',component:PalaceComponent},
+      {path:'openid/:openid',component:RegisterComponent},
+      {path:'enter/openid/:openid',component:UsercenterComponent}
     ])
 
+
   ],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

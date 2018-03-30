@@ -1,5 +1,9 @@
 import { Component,OnInit,Input} from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
+import { Activity, ActivityService } from './activities.service';
 
 @Component({
   selector: 'activity-detail',
@@ -9,10 +13,31 @@ import { Component,OnInit,Input} from '@angular/core';
 })
 export class ActivityDetailComponent implements OnInit {
 
+
+
+    activityDetail$:Observable<Activity>;
+    activityDetail:Activity ;
+    num:number;
     comments:string[]=['','','','','',''];
+
+    constructor(
+      private route: ActivatedRoute,
+      private router: Router,
+      private service: ActivityService
+    ) {}
     ngOnInit():void{
 
-      var detailSwiper = new Swiper ('.swiper-container', {
+      this.activityDetail$=this.route.paramMap.pipe(
+        switchMap((params:ParamMap)=>
+        this.service.getActivity(params.get('id') ))
+        );
+        this.activityDetail$.subscribe(result=>{
+        this.activityDetail=result;
+        console.log(result)
+        this.num=(Number(this.activityDetail.girls)+Number(this.activityDetail.gentlemen));
+        });
+        console.log('on init')
+        var detailSwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal',
         // 如果需要分页器
         pagination: {
@@ -28,5 +53,8 @@ export class ActivityDetailComponent implements OnInit {
 
 
       })
+
+
+
     }
 }

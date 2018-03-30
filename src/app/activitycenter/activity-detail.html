@@ -1,12 +1,9 @@
-<a routerLink='activity-detail'>
+
 <div style="background: #f3f2f3;" >
   <div class="swiper-container" style="height: 300px;" >
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="/assets/act1.jpg">
-      </div>
-      <div class="swiper-slide">
-        <img src="/assets/act1.jpg">
+    <div class="swiper-wrapper" >
+      <div class="swiper-slide" *ngFor="let banner of activityDetail.bannerimages" >
+        <img src="{{banner}}">
       </div>
 
     </div>
@@ -16,17 +13,13 @@
     <div class="swiper-pagination"></div>
   </div>
   <div style="padding: 3%;">
-    <font>活动时间：2018-05-07</font><br>
-    <font style="margin-top: 10px;display: block;">参与人数：2000</font>
+    <font>活动时间：{{activityDetail.start_time}}</font><br>
+    <font style="margin-top: 10px;display: block;">参与人数：{{num}}</font>
   </div>
   <div class="intro-words">
     <img src="/assets/icon1.png" style=" width: 26%; position: absolute; right: 0px;">
     <h3>活动介绍</h3>
-    <p style="line-height: 2em;margin-top: 6%;">随着《英雄指南》的成长，我们要添加更多需要访问英雄数据的组件。
-
-      为了不再把相同的代码复制一遍又一遍，我们要创建一个单一的可复用的数据服务，并且把它注入到需要它的那些组件中。 使用单独的服务可以保持组件精简，使其集中精力为视图提供支持，并且，借助模拟（Mock）服务，可以更容易的对组件进行单元测试。
-
-      由于数据服务总是异步的，因此我们最终会提供一个基于承诺（Promise）的数据服务。</p>
+    <p style="line-height: 2em;margin-top: 6%;">{{activityDetail.intro}}</p>
 
   </div>
   <div class="showphoto">
@@ -53,4 +46,4 @@
 
   </div>
 </div>
-</a>
+
