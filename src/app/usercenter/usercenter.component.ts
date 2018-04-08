@@ -1,13 +1,16 @@
 import { Component, OnInit,Inject,HostBinding } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { RotateAnimation } from "../animations";
+import { User, UserService } from '../user.service';
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-usercenter',
   templateUrl: './usercenter.component.html',
   styleUrls: ['./usercenter.component.css'],
-  animations:[RotateAnimation]
+  animations:[RotateAnimation],
+  providers:[UserService]
 })
-export class UsercenterComponent  {
+export class UsercenterComponent implements OnInit {
   @HostBinding('@rotateRouteAnimation') routeAnimation = true;
   @HostBinding('style.display')   display = 'block';
 
@@ -15,8 +18,14 @@ export class UsercenterComponent  {
   name: string='安东尼';
   sex:string='male';
   age:number=0;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog,public userService:UserService,public route:ActivatedRoute) {}
 
+  ngOnInit(){
+    let user=this.userService.getUser();
+    user.openid=this.route.snapshot.paramMap.get('openid');
+    this.userService.setUser(user)
+
+  }
   openDialog(): void {
     let dialogRef = this.dialog.open(NameDialog, {
       height: '400px',
