@@ -1,21 +1,37 @@
 import { Component, Input,EventEmitter,Output } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  keyframes,
 
+} from '@angular/animations';
+import { Choose } from '../../user.service';
 @Component({
   selector: 'app-choose',
   templateUrl: './choose.component.html',
   styleUrls: ['./choose.component.css'],
-
+  animations:[
+    trigger('move', [
+      state('none', style({})),
+      state('left', style({transform:'translateX(-26vmin) translateY(75vmin) scale(0)'})),
+      state('right',style({transform:'translateX(26vmin) translateY(75vmin) scale(0)'})),
+      transition('none <=> *', animate('1000ms ease-out'))
+    ]),
+  ],
 })
 //在div中放置组件，会影响他的从事件中取值，因为产生事件的控件改变了
 export class ChooseComponent  {
 
-
+  @Input() div:Choose;
   constructor() { }
    pos_start:any={
     x:0,
     y:0
   }
-
+  @Input() move='none';
   @Output() onChoose=new EventEmitter<string>();
   isdrag:boolean=false;
   pos_last:any;

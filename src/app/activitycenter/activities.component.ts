@@ -1,6 +1,7 @@
 import { Component,OnInit} from '@angular/core';
 import { ActivityService,Activity } from './activities.service';
 import { HttpClient } from "@angular/common/http";
+import { element } from 'protractor';
 
 @Component({
   selector: 'activities',
@@ -12,12 +13,19 @@ import { HttpClient } from "@angular/common/http";
 export class ActivitiesComponent implements OnInit{
 
 
-  results:Activity[];
+  results:Activity[]=new Array();
   constructor(private actService:ActivityService,private http:HttpClient){};
 
 
   ngOnInit():void{
-    this.actService.getActivities().then(data=>{this.results=data});
+    this.actService.getActivities().then(data=>{
+      data.forEach((element,index)=>{
+        if(element.confirm_end==0){
+         this.results.push(element)
+        }
+      })
+
+    });
 
     var mySwiper = new Swiper ('.swiper-container', {
       direction: 'horizontal',

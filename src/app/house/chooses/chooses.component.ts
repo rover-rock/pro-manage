@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService, Choose } from '../../user.service';
 import {
   trigger,
   state,
@@ -24,8 +26,8 @@ import {
       state('inactive',style({top:'-100px',opacity:0})),
       transition('active <=> inactive', animate('2000ms ease-in')),
 
-    ]),
-  ],
+    ])
+  ]
 })
 
 export class ChoosesComponent implements OnInit {
@@ -33,14 +35,20 @@ export class ChoosesComponent implements OnInit {
   cold='inactive';
   choose_times:number=0;
   over:string='inactive';
-  divs:string[]=['1','2','3','4','5','6','7','8'];
-  constructor() { }
+  divs:Choose[];
+  orderid:number;
+  constructor(private router:Router,private userService:UserService) { }
 
 
   ngOnInit() {
+      this.userService.hasChooses(this.userService.user.openid).subscribe(res=>{
+        this.divs=res['data']
+        this.orderid=res['orderid']
+      })
   }
 
   pophot(){
+
     this.hot='active';
     setTimeout(() => {
       this.hot='inactive'
@@ -53,6 +61,7 @@ export class ChoosesComponent implements OnInit {
     }, 800);
   }
   popcold(){
+
     this.cold='active';
     setTimeout(() => {
       this.cold='inactive'
@@ -72,6 +81,30 @@ export class ChoosesComponent implements OnInit {
       console.log('over')
       this.over='active';
     }
+  }
+  chooseleft(){
+    this.divs[this.divs.length-1-this.choose_times]['state']='left';
+    this.userService.subHeart(this.divs[this.divs.length-1-this.choose_times].openid).subscribe()
+    this.choose_times++
+    if(this.choose_times>=this.divs.length){
+      this.over='active';
+      this.userService.setchoosed(this.orderid)
+    }
+
+    //todo:当前用户减一评价
+    this.popcold()
+  }
+  chooseright(){
+    this.divs[this.divs.length-1-this.choose_times]['state']='right';
+    this.userService.addHeart(this.divs[this.divs.length-1-this.choose_times].openid).subscribe()
+    this.choose_times++
+    if(this.choose_times>=this.divs.length){
+      this.over='active';
+      this.userService.setchoosed(this.orderid)
+    }
+
+    //todo：当前用户加一评价
+    this.pophot()
   }
 
 }

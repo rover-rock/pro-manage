@@ -21,8 +21,8 @@
 
     </div>
   </div>
-  <div class="layui-col-xs6">
-          <div class="act-panel-spec" [routerLink]="['/act-detail',spec_act.id]">
+  <div class="layui-col-xs6" >
+          <div class="act-panel-spec" [routerLink]="['/act-detail',spec_act.id]" *ngIf='spec_act'>
             <img src="/assets/act1.jpg" class="headerimg-spec">
             <div class="layui-row">
               <div class="layui-col-xs7">

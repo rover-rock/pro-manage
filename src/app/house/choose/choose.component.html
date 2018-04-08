@@ -1,9 +1,9 @@
 
-<div   (touchstart)="dragstart($event)" (touchmove)="drag($event)" (touchend)='dragend()' draggable='true' [ngStyle]='divStyle'>
+<div [@move]='move'  (touchstart)="dragstart($event)" (touchmove)="drag($event)" (touchend)='dragend()' draggable='true' [ngStyle]='divStyle'>
 
     <img src='/assets/act1.jpg' class="panel-img">
     <div style=" width: 55%;float: left;padding:2% 5%;">
-      <font style="    font-size: 1.7em;color:gray;">安东尼</font><br>
+      <font style="    font-size: 1.7em;color:gray;">{{div.nickname}}</font><br>
       <img src="/assets/hall/girl-icon.png" style="width:8%">
     </div>
     <div style=" width: 20%; float: left;

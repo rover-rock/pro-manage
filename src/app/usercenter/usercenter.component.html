@@ -4,7 +4,7 @@
       <img src="/assets/user.png">
     </div>
     <div style="text-align:center;">
-      <font color="gray">安东尼</font>
+      <font color="gray">{{user.nickname}}</font>
     </div>
   </div>
 </div>
@@ -19,44 +19,33 @@
           昵称
         </mat-panel-title>
         <mat-panel-description>
-          安东尼
+          {{user.nickname}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-form-field>
-        <input matInput placeholder="新的昵称">
+        <input matInput placeholder="新的昵称" #name>
       </mat-form-field>
-      <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;">保存</button>
+      <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;" (click)="modifyName(name.value)" >保存</button>
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel >
       <mat-expansion-panel-header>
         <mat-panel-title>
           性别
         </mat-panel-title>
         <mat-panel-description>
-          {{sex}}
+          {{user.sex}}
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-form-field>
-        <mat-select placeholder="性别">
+        <mat-select placeholder="性别" #sex>
           <mat-option value="male">男</mat-option>
           <mat-option value="female">女 </mat-option>
         </mat-select>
       </mat-form-field>
+      <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;" (click)="modifySex(sex.value)" >保存</button>
     </mat-expansion-panel>
 
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          年龄
-        </mat-panel-title>
-        <mat-panel-description>
-          {{age}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <mat-slider [(ngModel)]="age" thumbLabel='true' style="width:80%;"></mat-slider>
-
-    </mat-expansion-panel>
   </mat-accordion>
 
   <mat-expansion-panel>
@@ -69,9 +58,9 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-form-field>
-      <input matInput placeholder="新的邮箱">
+      <input matInput placeholder="新的邮箱" #mail>
     </mat-form-field>
-    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;">保存</button>
+    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;" (click)="modifyMail(mail.value)" >保存</button>
   </mat-expansion-panel>
 
   <mat-expansion-panel>

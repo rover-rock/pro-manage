@@ -33,10 +33,8 @@ export class ActivityDetailComponent implements OnInit {
         );
         this.activityDetail$.subscribe(result=>{
         this.activityDetail=result;
-        console.log(result)
         this.num=(Number(this.activityDetail.girls)+Number(this.activityDetail.gentlemen));
         });
-        console.log('on init')
         var detailSwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal',
         // 如果需要分页器

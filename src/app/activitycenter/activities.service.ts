@@ -12,7 +12,10 @@ export class Activity {
     public titleimage: string,
     public bannerimages:string[],
     public liveimages:string[],
-    public intro:string
+    public intro:string,
+    public confirm_end:number,
+    public create_time:number,
+    public price:number
   ) {}
 }
 

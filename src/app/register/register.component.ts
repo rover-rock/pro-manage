@@ -41,7 +41,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
       transition('active <=> inactive', animate('100ms ease-in'))
     ])
   ],
-  providers:[UserService]
+
 })
 
 export class RegisterComponent implements OnInit {
@@ -52,11 +52,16 @@ export class RegisterComponent implements OnInit {
   hover_prev:string="inactive";
   indicator:number=0;
   verifycode:string;
-  user:User=new User('','','','','',0,'','','');
+  user:User;
 
   constructor(private userService:UserService,private route: ActivatedRoute){};
   ngOnInit(){
-    this.user.openid=this.route.snapshot.paramMap.get('openid');
+    //this.user.openid=this.route.snapshot.paramMap.get('openid');
+    this.route.data.subscribe((data:{user:User})=>{
+      console.log(data)
+    })
+    console.log(this.userService.user)
+    this.user=this.userService.getUser();
   }
   toggleState(i:number){
     this.state=["inactive","inactive","inactive"];

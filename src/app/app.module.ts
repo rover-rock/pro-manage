@@ -31,7 +31,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
 
 import { UsercenterComponent } from './usercenter/usercenter.component';
-import { LoginComponent } from './login/login.component';
+
 import { ActsComponent } from './hall/acts/acts.component';
 import { ActDetailComponent } from './hall/act-detail/act-detail.component';
 import { InfoVerifyComponent } from './hall/info-verify/info-verify.component';
@@ -40,7 +40,10 @@ import { OrdercenterComponent,AlertDialog } from './usercenter/ordercenter/order
 import { ChooseComponent } from './house/choose/choose.component';
 import { ChoosesComponent } from './house/chooses/chooses.component';
 import { PalaceComponent } from './house/palace/palace.component';
-
+import { UserService } from './user.service';
+import { OrderService } from './order.service';
+import { UserResovler } from "./route.service";
+import { LoginModule } from "./login/login.module";
 
 @NgModule({
   declarations: [
@@ -52,7 +55,6 @@ import { PalaceComponent } from './house/palace/palace.component';
     ActivityDetailComponent,
     UsercenterComponent,
     NameDialog,
-    LoginComponent,
     ActsComponent,
     ActDetailComponent,
     InfoVerifyComponent,
@@ -84,6 +86,7 @@ import { PalaceComponent } from './house/palace/palace.component';
     MatTabsModule,
     MatListModule,
     MatDividerModule,
+    LoginModule,
 
 
    ReactiveFormsModule,
@@ -92,9 +95,8 @@ import { PalaceComponent } from './house/palace/palace.component';
    FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path:'',redirectTo:'/register',pathMatch:'full'},
-      {path:'register',component:RegisterComponent},
-      {path:'login',component:LoginComponent},
+
+
       {path:'activities',component:ActivitiesComponent},
       {path:'activity-detail/:id',component:ActivityDetailComponent},
       {path:'usercenter',component:UsercenterComponent},
@@ -106,12 +108,12 @@ import { PalaceComponent } from './house/palace/palace.component';
       {path:'chooses',component:ChoosesComponent},
       {path:'palace',component:PalaceComponent},
       {path:'openid/:openid',component:RegisterComponent},
-      {path:'enter/openid/:openid',component:UsercenterComponent}
+      {path:'register',component:RegisterComponent}
     ])
 
 
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},UserService,OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

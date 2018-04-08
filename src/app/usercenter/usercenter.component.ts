@@ -1,30 +1,23 @@
 import { Component, OnInit,Inject,HostBinding } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { RotateAnimation } from "../animations";
 import { User, UserService } from '../user.service';
 import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: 'app-usercenter',
   templateUrl: './usercenter.component.html',
   styleUrls: ['./usercenter.component.css'],
-  animations:[RotateAnimation],
-  providers:[UserService]
+
 })
 export class UsercenterComponent implements OnInit {
-  @HostBinding('@rotateRouteAnimation') routeAnimation = true;
-  @HostBinding('style.display')   display = 'block';
-
   panelOpenState: boolean = false;
   name: string='安东尼';
   sex:string='male';
-  age:number=0;
+  age:number=25;
+  user:User;
   constructor(public dialog: MatDialog,public userService:UserService,public route:ActivatedRoute) {}
 
   ngOnInit(){
-    let user=this.userService.getUser();
-    user.openid=this.route.snapshot.paramMap.get('openid');
-    this.userService.setUser(user)
-
+    this.user=this.userService.getUser()
   }
   openDialog(): void {
     let dialogRef = this.dialog.open(NameDialog, {
@@ -39,6 +32,21 @@ export class UsercenterComponent implements OnInit {
      this.name=result;
     });
   }
+  modifyName(name){
+
+    this.user.nickname=name;
+    this.userService.addUser(this.user).subscribe();
+  }
+  modifySex(sex){
+    this.user.sex=sex;
+    this.userService.addUser(this.user).subscribe();
+  }
+  modifyMail(mail){
+    this.user.mail=mail;
+    this.userService.addUser(this.user).subscribe();
+  }
+
+
 
 }
 
