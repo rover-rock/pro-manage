@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>修改个人简介</h2>
 <mat-dialog-content>
   <mat-form-field>
-    <textarea matInput  placeholder="简介" [(ngModel)]='name' matTextareaAutosize matAutosizeMinRows="15"></textarea>
+    <textarea matInput  placeholder="简介" [(ngModel)]='name' matTextareaAutosize matAutosizeMinRows="15" value="{{data.name}}"></textarea>
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>

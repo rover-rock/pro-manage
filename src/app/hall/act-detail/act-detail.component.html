@@ -1,4 +1,4 @@
-<div style="background: #f3f2f3;height:170%;padding: 15px;" >
+<div style="background: #f3f2f3;height:200%;padding: 15px;" >
   <div class="subscribe" routerLink='/info-verify'>
     <div class="layui-row">
       <div class="layui-col-xs2" style="padding: 2%;">
@@ -7,7 +7,7 @@
       <div class="layui-col-xs7">
         <p style="font-size: 1.5em;">{{actDetail.title}}</p>
         <div style=" margin-top: 7%;color: gray;">
-          <p>1112位成员·266位预约成功</p>
+          <p>1112位成员</p>
         </div>
       </div>
       <div class="layui-col-xs3" style="margin-top: 7%;">
@@ -17,7 +17,7 @@
   </div>
   <div style="height: 50px;"></div>
   <div class="header">
-       <img src="/assets/hall/corner.png" class="corner-img">
+       <img src="assets/hall/corner.png" class="corner-img">
     <p class="header-p">浪漫海滩</p>
     <img src="{{actDetail.bannerimages[0]}}" class="left-img">
     <img src="{{actDetail.bannerimages[1]}}" class="right-img">
@@ -30,19 +30,25 @@
   </div>
   <div class="description">
       活动时间：{{actDetail.start_time}}<br>
-      活动地点：老地方
+      活动地点：{{actDetail.address}}
   </div>
   <div class="operation">
-      <img src="/assets/hall/btn1.png" class="btn1">
-      <img src="/assets/hall/btn2.png" class="btn2">
-      <img src="/assets/hall/btn3.png" class="btn3">
+      <img src="assets/hall/btn1.png" class="btn1" (click)="show()" >
+      <img src="assets/hall/btn2.png" class="btn2">
+      <img src="assets/hall/btn3.png" class="btn3">
+  </div>
+  <div class="comments" [@comment]='comment' >
+     <mat-form-field>
+       <textarea matInput placeholder="留言建议" matTextareaAutosize matAutosizeMinRows='3' [(ngModel)]="this.advice.advice" ></textarea>
+     </mat-form-field>
+     <button mat-raised-button style="margin-left:10%" (click)="hide()" >提交</button>
   </div>
   <div style="position: relative;">
     <div style="width:70%;height:200px;background:antiquewhite;margin: 60px auto;box-shadow: 2px 8px 18px 3px grey;">
-        tips
+       <h3>精选建议：</h3><br>请多游览一些历史景点
     </div>
-    <img src="/assets/hall/tips.png" class="tips">
-    <img src="/assets/hall/pin.png" class="pin">
+    <img src="assets/hall/tips.png" class="tips">
+    <img src="assets/hall/pin.png" class="pin">
   </div>
 
 

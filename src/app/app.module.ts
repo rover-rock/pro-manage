@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 
 import { RegisterComponent } from "./register/register.component";
 import { BottomNavComponent } from "./bottom-nav.component";
-import { ActivitiesComponent } from "./activitycenter/activities.component";
+import { ActivitiesComponent } from './activitycenter/activities.component';
 import { ActivityDetailComponent } from "./activitycenter/activity-detail";
 import { NameDialog } from "./usercenter/usercenter.component";
 
@@ -29,6 +29,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
 
 import { UsercenterComponent } from './usercenter/usercenter.component';
 
@@ -42,8 +43,11 @@ import { ChoosesComponent } from './house/chooses/chooses.component';
 import { PalaceComponent } from './house/palace/palace.component';
 import { UserService } from './user.service';
 import { OrderService } from './order.service';
-import { UserResovler } from "./route.service";
+import { ActivityResolver } from './route.service';
 import { LoginModule } from "./login/login.module";
+import { ActivityService } from './activitycenter/activities.service';
+import { resolve } from 'q';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +68,7 @@ import { LoginModule } from "./login/login.module";
     ChooseComponent,
     ChoosesComponent,
     PalaceComponent,
+    TestComponent,
 
   ],
   entryComponents: [
@@ -86,6 +91,7 @@ import { LoginModule } from "./login/login.module";
     MatTabsModule,
     MatListModule,
     MatDividerModule,
+    MatTableModule,
     LoginModule,
 
 
@@ -96,9 +102,8 @@ import { LoginModule } from "./login/login.module";
     HttpClientModule,
     RouterModule.forRoot([
 
-
       {path:'activities',component:ActivitiesComponent},
-      {path:'activity-detail/:id',component:ActivityDetailComponent},
+      {path:'activity-detail/:id',component:ActivityDetailComponent,resolve:{activity:ActivityResolver}},
       {path:'usercenter',component:UsercenterComponent},
       {path:'acts',component:ActsComponent},
       {path:'act-detail/:id',component:ActDetailComponent},
@@ -108,12 +113,15 @@ import { LoginModule } from "./login/login.module";
       {path:'chooses',component:ChoosesComponent},
       {path:'palace',component:PalaceComponent},
       {path:'openid/:openid',component:RegisterComponent},
-      {path:'register',component:RegisterComponent}
+      {path:'register',component:RegisterComponent},
+      //  {path:'',component:TestComponent},
+
     ])
 
 
+
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},UserService,OrderService],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy},UserService,OrderService,ActivityResolver,ActivityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

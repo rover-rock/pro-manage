@@ -22,7 +22,7 @@ import {
 
     ]),
     trigger('popup', [
-      state('active', style({transform:'translateY(300px)',opacity:1})),
+      state('active', style({transform:'translateY(200px)',opacity:1})),
       state('inactive',style({top:'-100px',opacity:0})),
       transition('active <=> inactive', animate('2000ms ease-in')),
 
@@ -35,14 +35,19 @@ export class ChoosesComponent implements OnInit {
   cold='inactive';
   choose_times:number=0;
   over:string='inactive';
-  divs:Choose[];
+  divs:Choose[]=new Array();
+  //正在选择的订单号
   orderid:number;
   constructor(private router:Router,private userService:UserService) { }
 
 
   ngOnInit() {
-      this.userService.hasChooses(this.userService.user.openid).subscribe(res=>{
-        this.divs=res['data']
+      this.userService.hasChooses(this.userService.getUser().openid).subscribe(res=>{
+        res['data'].forEach(element => {
+          if(element['sex']!=this.userService.getUser().sex){
+            this.divs.push(element)
+          }
+        });
         this.orderid=res['orderid']
       })
   }

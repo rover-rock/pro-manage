@@ -1,13 +1,17 @@
 <div class="layui-row" style="margin-bottom: 10%;">
   <div class="layui-col-xs4 layui-col-xs-offset4">
     <div class="layui-circle avatar">
-      <img src="/assets/user.png">
+      <img src="assets/user.png">
     </div>
     <div style="text-align:center;">
       <font color="gray">{{user.nickname}}</font>
     </div>
+
   </div>
 </div>
+<!-- <div style="text-align:center;">
+  <font style="color: darkred;font-size: 2em;">‘‘{{user.intro}}’’</font>
+</div> -->
 <button mat-raised-button class="full" routerLink="/ordercenter">订单中心&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;></button>
 <div class="divider"></div>
 
@@ -54,7 +58,7 @@
        邮箱
       </mat-panel-title>
       <mat-panel-description>
-        362463215@qq.com
+        {{user.mail}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-form-field>
@@ -66,16 +70,16 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        身份证号
+        身份证号码
       </mat-panel-title>
       <mat-panel-description>
-       47885263145858
+      {{user.cert_num}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-form-field>
-      <input matInput placeholder="新的身份证号">
+      <input matInput placeholder="新的身份证号" #cert>
     </mat-form-field>
-    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;">保存</button>
+    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;" (click)="modifyCert(cert.value)" >保存</button>
   </mat-expansion-panel>
 
   <mat-expansion-panel>
@@ -84,16 +88,17 @@
         手机号
       </mat-panel-title>
       <mat-panel-description>
-        18956485236
+        {{user.phone}}
       </mat-panel-description>
     </mat-expansion-panel-header>
     <mat-form-field>
-      <input matInput placeholder="新的手机号">
+      <input matInput placeholder="新的手机号" #phone>
     </mat-form-field>
-    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;">保存</button>
+    <button mat-raised-button style="height: 2rem;position: relative;right: -2rem;" (click)="modifyPhone(phone.value)" >保存</button>
   </mat-expansion-panel>
 
   <button mat-raised-button (click)="openDialog()"  class="full">个人简介</button>
 </div>
+<div style="height: 30vmin"></div>
 <!-- <div class="divider"></div> -->
 <!-- <div style="background:white; height:100px;"><font style="font-size: 1.5em;color: gray;padding: 0px 18px;">更多功能期待中......</font></div> -->

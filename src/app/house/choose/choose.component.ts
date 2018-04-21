@@ -16,8 +16,8 @@ import { Choose } from '../../user.service';
   animations:[
     trigger('move', [
       state('none', style({})),
-      state('left', style({transform:'translateX(-26vmin) translateY(75vmin) scale(0)'})),
-      state('right',style({transform:'translateX(26vmin) translateY(75vmin) scale(0)'})),
+      state('left', style({transform:'translateX(-26vmin) translateY(50vmin) scale(0)'})),
+      state('right',style({transform:'translateX(26vmin) translateY(50vmin) scale(0)'})),
       transition('none <=> *', animate('1000ms ease-out'))
     ]),
   ],

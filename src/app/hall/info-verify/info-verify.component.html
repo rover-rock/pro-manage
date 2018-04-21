@@ -1,17 +1,17 @@
 
 <div style="height:10%"></div>
 <div class="panel">
-  <img src="/assets/hall/belt.png" class="header">
+  <img src="assets/hall/belt.png" class="header">
   <div style="text-align:center;font-size:2em;">核对报名信息</div>
-  <table class="layui-table">
-    <tr><td>姓名</td><td>{{user.nickname}}</td></tr>
-    <tr><td>联系方式</td>{{user.phone}}</tr>
-    <tr><td>参与活动名称</td>{{order.title}}</tr>
-  </table>
+    <mat-list>
+      <mat-list-item>姓名 :{{user.nickname}}</mat-list-item>
+      <mat-list-item>联系方式 :{{user.phone}}</mat-list-item>
+      <mat-list-item>参与活动名称 :{{order.title}}</mat-list-item>
+    </mat-list>
 
-  <a style="color: gray;text-decoration: underline;    margin-left: 5%;font-size: 1.3em;">查看活动详情</a>
+  <!-- <a style="color: gray;text-decoration: underline;    margin-left: 5%;font-size: 1.3em;">查看活动详情</a> -->
   <div style="text-align: center;    margin-top: 14%;">确认无误？</div>
-  <div id='btn' routerLink='/confirm-order' (click)="addOrder()" >
-    <img src="/assets/hall/btn.png">立即报名
+  <div id='btn'  (click)="addOrder()" >
+    <img src="assets/hall/btn.png">立即报名
   </div>
 </div>

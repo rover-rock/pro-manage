@@ -15,14 +15,24 @@ export class Activity {
     public intro:string,
     public confirm_end:number,
     public create_time:number,
-    public price:number
+    public price:number,
+    public address:string
   ) {}
 }
+export class Comment{
+  constructor(
+    public matingid:number,
+    public title:string,
+    public openid:string,
+    public nickname:string,
+    public comment:string,
 
+  ){}
+}
 @Injectable()
 export class ActivityService {
   constructor(private http: HttpClient) {}
-
+  activity:Activity;
   getActivities(): Promise<Activity[]> {
     return this.http
       .get<Activity[]>(
@@ -37,5 +47,14 @@ export class ActivityService {
           id
       )
       ;
+  }
+
+  getComments(matingid):Observable<Comment[]>{
+    return this.http
+      .get<Comment[]>("http://fu.dicyan.cn/app/index.php?i=3&c=entry&do=getcomments&m=friendsocity&matingid="+matingid)
+  }
+  addComment(comment){
+    let url="http://fu.dicyan.cn/app/index.php?i=3&c=entry&do=addcomment&m=friendsocity"
+    return this.http.post<Comment>(url,comment)
   }
 }

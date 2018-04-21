@@ -2,7 +2,10 @@
   font-size: 20px;
 }
 .order-panel{
-  height: 150px;
+  height: 140px;
   background: gainsboro;
   padding:2% 4%;
+}
+.mat-card{
+  padding: 20px 16px;
 }

@@ -1,0 +1,132 @@
+<h1 style="text-align:center;">快享车算法模拟</h1>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-gap:1vmin;margin-bottom:3vmin">
+    <mat-card>
+      <mat-card-title>总收入</mat-card-title>
+      <mat-card-content>{{income}}.00</mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-title>总支出</mat-card-title>
+        <mat-card-content>{{cost}}.00</mat-card-content>
+      </mat-card>
+    <mat-card>
+          <mat-card-title>操作说明</mat-card-title>
+          <mat-card-subtitle>此系统用于快享车逻辑检测，数据展示，以及收支测算，记录</mat-card-subtitle>
+          <mat-card-content>输入新加入系统用户姓名信息，选择被协助人，推荐人，点击添加。其中，id为1的root用户为系统根用户。点击重置，可刷新数据，重启测试。</mat-card-content>
+    </mat-card>
+    </div>
+<mat-form-field>
+  <input matInput placeholder="新增会员" [(ngModel)]="name">
+</mat-form-field>
+<button mat-raised-button (click)="addMember();table1.renderRows();table2.renderRows();table3.renderRows()">添加</button>
+<mat-form-field>
+  <mat-select placeholder="被协助人" [(value)]='parent'>
+    <mat-option *ngFor="let m of members" [value]="m.id">
+      {{ m.name }}&emsp;id:{{m.id}}
+    </mat-option>
+  </mat-select>
+
+</mat-form-field>
+<mat-form-field>
+  <mat-select placeholder="推荐人" [(value)]='recommender'>
+    <mat-option *ngFor="let m of members" [value]="m.id">
+      {{ m.name }}&emsp;id:{{m.id}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<button mat-raised-button (click)='reset()'>重置</button>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-gap:1vmin">
+  <div>
+    <h2>会员表</h2>
+    <mat-table #table1 [dataSource]="members">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> 姓名</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="parent">
+        <mat-header-cell *matHeaderCellDef> 被协助人 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.parent}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="recommender">
+        <mat-header-cell *matHeaderCellDef> 推荐人 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.recommender}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="award">
+        <mat-header-cell *matHeaderCellDef> 直推奖励 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.award}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="awardout">
+          <mat-header-cell *matHeaderCellDef> 出局奖励 </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.awardout}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <div>
+    <h2>更新前小组表</h2>
+    <mat-table #table2 [dataSource]="groups_last">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> 小组编号 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="m1">
+        <mat-header-cell *matHeaderCellDef> 成员1</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.m1}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="m2">
+        <mat-header-cell *matHeaderCellDef> 成员2 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.m2}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="m3">
+        <mat-header-cell *matHeaderCellDef> 成员3 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.m3}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="full">
+        <mat-header-cell *matHeaderCellDef> 标志符 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.full}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns2;"></mat-row>
+    </mat-table>
+  </div>
+  <div>
+      <h2>更新后小组表（主要）</h2>
+    <mat-table #table3 [dataSource]="groups">
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> 小组编号 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="m1">
+        <mat-header-cell *matHeaderCellDef> 成员1</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.m1}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="m2">
+        <mat-header-cell *matHeaderCellDef> 成员2 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.m2}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="m3">
+        <mat-header-cell *matHeaderCellDef> 成员3 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.m3}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="full">
+        <mat-header-cell *matHeaderCellDef> 标识符 </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.full}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns2;"></mat-row>
+    </mat-table>
+  </div>
+  <div style="background:#ecd2d2">
+    <h2>小组循环记录：</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let log of logs;let odd=odd; " [class.odd]='odd' >
+        {{log}}
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

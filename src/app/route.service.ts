@@ -4,13 +4,12 @@ import { Router, Resolve, RouterStateSnapshot,
 import { Observable }             from 'rxjs';
 import { map, take }              from 'rxjs/operators';
 import { User, UserService } from './user.service';
-import { HttpClient } from "@angular/common/http";
+import { ActivityService, Activity } from './activitycenter/activities.service';
 @Injectable()
 export class UserResovler implements Resolve<User> {
   constructor(private userService:UserService,private router:Router){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<User>{
-    let openid = route.paramMap.get('openid');
-    console.log(openid)
+    let openid = route.paramMap.get('openid')
     this.userService.initUser(openid).subscribe(result=>{
       //导航之前，就应该设置好单例的服务
 
@@ -20,6 +19,7 @@ export class UserResovler implements Resolve<User> {
         this.router.navigate(['/register'])
       }
       else {
+
         this.userService.setUser(result)
         this.userService.hasChooses(openid).subscribe(res=>{
           if(res['result']=='chooses'){
@@ -38,5 +38,13 @@ export class UserResovler implements Resolve<User> {
 
 
 
+  }
+}
+@Injectable()
+export class ActivityResolver implements Resolve<Activity> {
+  constructor(private activityService:ActivityService){}
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):Observable<Activity>{
+    console.log(route.paramMap.get('id'))
+   return  this.activityService.getActivity(route.paramMap.get('id'))
   }
 }

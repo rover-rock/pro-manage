@@ -110,6 +110,6 @@ export class RegisterComponent implements OnInit {
 
   }
   addUser(){
-    this.userService.addUser(this.user).subscribe(res=>console.log(res));
+    this.userService.addUser(this.user).subscribe(res=>this.userService.user.avatar=res);
   }
 }

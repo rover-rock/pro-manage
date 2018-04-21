@@ -73,7 +73,7 @@
       <button (click)="prev()" [@hover]='hover_prev' class="prev-btn"  *ngIf="indicator===1"></button>
     </div>
     <div class="layui-col-xs3 layui-col-xs-offset4">
-      <button (click)='next()'  [@hover]='hover' class="next-btn"  *ngIf="indicator!=2"  ></button>
+      <button (click)='next()'  [@hover]='hover' class="next-btn"  *ngIf="indicator!=2" [disabled]="!userForm.valid" ></button>
     </div>
   </div>
 </div>

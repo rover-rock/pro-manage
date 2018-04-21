@@ -8,7 +8,7 @@
 
     </div>
       <div class="bottom-dec">
-        <img src="/assets/dec.png">
+        <img src="assets/dec.png">
       </div>
     <div class="swiper-pagination"></div>
   </div>
@@ -17,13 +17,13 @@
     <font style="margin-top: 10px;display: block;">参与人数：{{num}}</font>
   </div>
   <div class="intro-words">
-    <img src="/assets/icon1.png" style=" width: 26%; position: absolute; right: 0px;">
+    <img src="assets/icon1.png" style=" width: 26%; position: absolute; right: 0px;">
     <h3>活动介绍</h3>
     <p style="line-height: 2em;margin-top: 6%;">{{activityDetail.intro}}</p>
 
   </div>
   <div class="showphoto">
-    <img src="/assets/bg-show.png">
+    <img src="assets/bg-show.png">
   </div>
   <div style="text-align: center; margin: 5%;border-bottom: 5px dotted darkgray;">
    <h3>戳下面看视频</h3>
@@ -31,8 +31,15 @@
   </div>
   <div >
     <div style="text-align:center;"><h3>精选留言</h3> </div>
+    <div (click)="state='show'"  ><font style="color:red">留言</font> </div>
+    <div class="comments" [@comment]='state' >
+      <mat-form-field>
+        <textarea matInput placeholder="请输入留言，等待审核" matTextareaAutosize matAutosizeMinRows='3' [(ngModel)]='comment.comment' ></textarea>
+      </mat-form-field>
+      <button mat-raised-button style="margin-left:10%" (click)="addComment()" >提交</button>
+   </div>
     <div class="layui-row comment" *ngFor="let comment of comments">
-      <div class="layui-col-xs2"><img class="avatar" src="/assets/nav3.png"></div>
+      <div class="layui-col-xs2"><img class="avatar" src="assets/nav3.png"></div>
 
       <div class="layui-col-xs9">
         <div style="    background: wheat;">2018-02-04&emsp;00:04&emsp;<font color="blue">安东尼</font></div>

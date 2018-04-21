@@ -6,8 +6,8 @@
   <mat-card-title>&emsp;购买人信息</mat-card-title>
   <mat-card-content>
     <p style="   background: #efe8e8;  padding: 10px;">
-       姓名：张三<br>
-    联系电话：15896547896
+       姓名：{{user.realname}}<br>
+    联系电话：{{user.phone}}
     </p>
 
   </mat-card-content>
@@ -19,17 +19,17 @@
 
   <mat-card-content>
       <div class="order-panel">
-        <img src="/assets/act1.jpg" style="    width: 37%; height: 45%;">
-        <div style=" width: 55%;float: right;">这是标题和活动介绍这是标题和活动介绍</div>
+        <img src="assets/act1.jpg" style="    width: 37%; height: 45%;">
+        <div style=" width: 55%;float: right;">{{order.title}}</div>
         <div style="    margin-top: 5%;color: gray;">
-          开始时间：12-03<br>
-          活动地址：风筝广场
+          开始时间：{{start_time}}<br>
+          活动地址：{{address}}
         </div>
       </div>
   </mat-card-content>
   <mat-card-actions>
     <div style="    width: 50%;    margin-left: 50%;">
-      合计：￥99.00&emsp;<button class="layui-btn layui-btn-normal layui-btn-radius">支付</button>
+      合计：￥{{order.price}}&emsp;<a class="layui-btn layui-btn-normal layui-btn-radius" href="http://fu.dicyan.cn/app/index.php?i=3&c=entry&do=pay&m=friendsocity&orderid={{orderid}}">支付</a>
     </div>
 
   </mat-card-actions>

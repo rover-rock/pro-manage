@@ -3,38 +3,57 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { Activity, ActivityService } from './activities.service';
+import { Activity, ActivityService,Comment } from './activities.service';
+import { UserService } from '../user.service';
 
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  keyframes,
+
+} from '@angular/animations';
 @Component({
   selector: 'activity-detail',
   templateUrl: './activity-detail.html',
   styleUrls: ['./activity-detail.css'],
+  animations:[
+    trigger('comment', [
+      state('show', style({transform:'scale(1)'})),
+      state('hide',style({transform:'scale(0)','height':'0'})),
+      transition('show <=> hide', animate('500ms ease-in')),
+      ])
+    ]
 
 })
 export class ActivityDetailComponent implements OnInit {
 
 
-
-    activityDetail$:Observable<Activity>;
     activityDetail:Activity ;
     num:number;
-    comments:string[]=['','','','','',''];
-
+    comments:Comment[]=new Array(8);
+    comment:Comment=new Comment(1,'','','','');
+    state:string='hide'
     constructor(
       private route: ActivatedRoute,
       private router: Router,
-      private service: ActivityService
+      private service: ActivityService,
+      private userService:UserService
     ) {}
     ngOnInit():void{
+     this.route.data.subscribe((data:{activity:Activity})=>{
+          this.activityDetail=data.activity
+          this.num=(Number(this.activityDetail.girls)+Number(this.activityDetail.gentlemen));
 
-      this.activityDetail$=this.route.paramMap.pipe(
-        switchMap((params:ParamMap)=>
-        this.service.getActivity(params.get('id') ))
-        );
-        this.activityDetail$.subscribe(result=>{
-        this.activityDetail=result;
-        this.num=(Number(this.activityDetail.girls)+Number(this.activityDetail.gentlemen));
-        });
+      })
+
+        // this.service.getComments(this.route.snapshot.paramMap.get('id')).subscribe(result=>{
+        //   this.comments=result
+        // })
+
+
         var detailSwiper = new Swiper ('.swiper-container', {
         direction: 'horizontal',
         // 如果需要分页器
@@ -51,8 +70,14 @@ export class ActivityDetailComponent implements OnInit {
 
 
       })
-
-
-
     }
+
+     addComment(){
+        this.state='hide'
+         this.comment.openid=this.userService.user.openid
+        this.comment.nickname=this.userService.user.nickname
+        this.comment.title=this.activityDetail.title
+        this.comment.matingid=this.activityDetail.id
+        this.service.addComment(this.comment).subscribe()
+     }
 }

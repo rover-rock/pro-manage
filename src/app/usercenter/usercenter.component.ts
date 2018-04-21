@@ -10,9 +10,6 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class UsercenterComponent implements OnInit {
   panelOpenState: boolean = false;
-  name: string='安东尼';
-  sex:string='male';
-  age:number=25;
   user:User;
   constructor(public dialog: MatDialog,public userService:UserService,public route:ActivatedRoute) {}
 
@@ -23,13 +20,14 @@ export class UsercenterComponent implements OnInit {
     let dialogRef = this.dialog.open(NameDialog, {
       height: '400px',
       width: '300px',
-      data: { name: this.name }
+      data: { name: this.user.intro }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(`Dialog result: ${result}`);
-     this.name=result;
+     this.user.intro=result;
+     this.userService.addUser(this.user).subscribe()
     });
   }
   modifyName(name){
@@ -45,7 +43,14 @@ export class UsercenterComponent implements OnInit {
     this.user.mail=mail;
     this.userService.addUser(this.user).subscribe();
   }
-
+  modifyCert(cert){
+    this.user.cert_num=cert;
+    this.userService.addUser(this.user).subscribe();
+  }
+  modifyPhone(phone){
+    this.user.phone=phone;
+    this.userService.addUser(this.user).subscribe();
+  }
 
 
 }

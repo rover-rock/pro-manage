@@ -7,20 +7,20 @@
               <mat-list-item *ngFor="let person of persons_hot;let i=index">
                 <div class="custom-card">
                 <div>
-                <img class="avatar" src="/assets/act1.jpg" alt="...">
+                <img class="avatar" src="assets/act1.jpg" alt="...">
               </div>
                 <div>
-                <h2 matLine style="color:gray;font-size: 1.1em;"> {{person.at_openid}} </h2>
+                <h2 matLine style="color:gray;font-size: 1.1em;"> {{person.nickname}} </h2>
                 <div matLine style="background:linear-gradient(to right bottom,#fbcdc7,#e9b4c7,#fca69d);height:20px;" [style.width.%]="person.heart" >
                 </div>
                 </div>
-
+<!--
               <div (click)='makecold(i)' >
-                <img src="/assets/house/cold.png" style="width:90%;margin-top:30%;">
+                <img src="assets/house/cold.png" style="width:90%;margin-top:30%;">
               </div>
               <div (click)='makehot(i)' >
-                <img src="/assets/house/hot.png" style="width:90%;margin-top:30%;">
-              </div>
+                <img src="assets/house/hot.png" style="width:90%;margin-top:30%;">
+              </div> -->
              </div>
              <mat-divider inset='true'></mat-divider>
               </mat-list-item>
@@ -33,22 +33,22 @@
         <div class="fill"></div>
         <div >
             <mat-list>
-              <mat-list-item *ngFor="let person of persons_cold">
+              <mat-list-item *ngFor="let person of persons_cold;let i=index;">
                 <div class="custom-card">
                 <div>
-                <img class="avatar" src="/assets/act1.jpg" alt="...">
+                <img class="avatar" src="assets/act1.jpg" alt="...">
               </div>
                 <div>
-                <h2 matLine style="color:gray;font-size: 1.1em;"> {{person.at_openid}} </h2>
+                <h2 matLine style="color:gray;font-size: 1.1em;"> {{person.nickname}} </h2>
                 <div matLine style="background:linear-gradient(to right bottom,#fbcdc7,#e9b4c7,#fca69d);height:20px;" [style.width.%]="person.heart" >
                 </div>
                 </div>
 
-              <div>
-                <img src="/assets/house/cold.png" style="width:90%;margin-top:30%;">
-              </div>
-              <div>
-                <img src="/assets/house/hot.png" style="width:90%;margin-top:30%;">
+              <!-- <div>
+                <img src="assets/house/cold.png" style="width:90%;margin-top:30%;">
+              </div> -->
+              <div (click)="makehot(i)" >
+                <img src="assets/house/hot.png" style="width:90%;margin-top:30%;">
               </div>
              </div>
              <mat-divider inset='true'></mat-divider>

@@ -14,7 +14,8 @@ export class User {
     public cert_num:string,
     public openid:string,
     public heart:number,
-    public avatar:string
+    public avatar:string,
+    public intro:string
   ) {}
 }
 export class Choose {
@@ -26,7 +27,7 @@ export class Choose {
    public openid:string
   ) {}
 }
-
+//上传的数据结构
 export class Palace{
   constructor(
     public id:number,
@@ -36,6 +37,19 @@ export class Palace{
     public time:number
   ){}
 }
+//下载获取的数据结构，信息更多一些，需要显示
+export class Palace_get{
+  constructor(
+    public id:number,
+    public openid:string,
+    public at_openid:string,
+    public heart:number,
+    public time:number,
+    public nickname:string,
+    public avatar:string
+  ){}
+}
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
@@ -47,12 +61,12 @@ export class UserService {
   constructor(private http: HttpClient) {
 
   }
-  user:User=new User('aaa','','','','',0,'','','ot1R_wySCgqN_pRjldmo4bPlJo_A',0,'');
+  user:User=new User('','','','','',0,'','','28',0,'','');
   chooses:any;
-  addUser(user:User):Observable<User>{
+  addUser(user:User):Observable<string>{
     let url=baseUrl+'&do=adduser';
-    this.user=user;
-    return this.http.post<User>(url,user);
+    this.setUser(user)
+    return this.http.post<string>(url,user);
   }
   initUser(openid):Observable<User>{
     let url=baseUrl+"&do=getuser&openid="+openid
@@ -66,17 +80,25 @@ export class UserService {
   }
 
   getUser():User{
-    return this.user;
+    let data=localStorage.getItem('user')
+    if(data==null||undefined)
+    {
+      return this.user;
+    }
+    else{
+      return JSON.parse(data)
+    }
   }
   setUser(user){
+    localStorage.setItem('user',JSON.stringify(user))
     this.user=user;
   }
   //获取宫中人
   getHouse(openid){
       let url=baseUrl+'&do=gethouse&openid='+openid
-      return this.http.get<Palace[]>(url)
+      return this.http.get<Palace_get[]>(url)
   }
-  setHouse(data){
+  setHouse(data:Palace){
 
     let url=baseUrl+'&do=sethouse'
     return  this.http.post<Palace>(url,data)

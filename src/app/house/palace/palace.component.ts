@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Palace, UserService } from '../../user.service';
+import { Palace_get,Palace, UserService } from '../../user.service';
 @Component({
   selector: 'app-palace',
   templateUrl: './palace.component.html',
@@ -7,9 +7,8 @@ import { Palace, UserService } from '../../user.service';
 })
 export class PalaceComponent implements OnInit {
 
-  persons:number[]=[100,90,80,70];
-  persons_cold:Palace[]=new Array()
-  persons_hot:Palace[]=new Array()
+  persons_cold:Palace_get[]=new Array()
+  persons_hot:Palace_get[]=new Array()
   constructor(private userService:UserService) { }
 
   ngOnInit() {
@@ -26,20 +25,44 @@ export class PalaceComponent implements OnInit {
             this.persons_cold.push(element)
           }
         });
-        this.persons_hot.sort()
+        this.persons_hot.sort((a,b)=>{
+          return b.heart-a.heart;
+        })
     })
-    //后宫排序
 
   }
-  makecold(i){
-    //降低对某人喜欢值，若为0，进冷宫
-    this.persons_hot[i].heart-=10;
+  // makecold(i){
+  //   //降低对某人喜欢值，若为0，进冷宫
+  //   let person:Palace
+  //   person.id=this.persons_hot[i].id
+  //   person.openid=this.persons_hot[i].openid
+  //   person.at_openid=this.persons_hot[i].at_openid
+  //   person.time=this.persons_hot[i].time
+  //   person.heart= this.persons_hot[i].heart-10;
+  //   this.persons_hot[i].heart-=10;
+  //   this.persons_hot.sort((a,b)=>{
+  //     return b.heart-a.heart;
+  //   })
+  //   this.userService.setHouse(person).subscribe()
+  // }
+  // makehot(i){
+  //   //提高对某人喜欢值，大于0，进后宫
+  //   this.persons_hot[i].heart =Number(this.persons_hot[i].heart)+10
+  //   this.persons_hot.sort((a,b)=>{
+  //     return b.heart-a.heart;
+  //   })
+  //   this.userService.setHouse(this.persons_hot[i]).subscribe()
+  // }
+    makehot(i){
+      let person:Palace=new Palace(1,'','',1,1)
+    person.id=this.persons_cold[i].id
+    person.openid=this.persons_cold[i].openid
+    person.at_openid=this.persons_cold[i].at_openid
+    person.time=this.persons_cold[i].time
+    person.heart=10;
+    this.userService.setHouse(person).subscribe()
 
-    this.userService.setHouse(this.persons_hot[i]).subscribe()
-  }
-  makehot(i){
-    //提高对某人喜欢值，大于0，进后宫
-    this.persons_hot[i].heart =Number(this.persons_hot[i].heart)+10
-    this.userService.setHouse(this.persons_hot[i]).subscribe()
-  }
+
+    this.persons_hot.push(this.persons_cold.splice(i,1)[0])
+    }
 }
